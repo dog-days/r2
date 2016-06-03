@@ -1,0 +1,37 @@
+.info-con{
+}
+.acount_info-form .ant-form-item{
+	margin-bottom:0px;
+	width:600px;
+}
+.acount_info-form .ant-form-horizontal{
+	margin-top:17px;
+}
+.acount_info-form .line-title-con2{
+	margin-top:30px;
+}
+.acount_info-form .identification{
+	color:blue;
+	text-decoration:underline;
+}
+.acount_info-form .no-identification{
+	margin-top:20px;
+}
+.companyinfo .info-line{
+	width:auto;
+}
+.account_info_blindPhone{
+	overflow: hidden;
+}
+.account_info_blindPhone_input{
+	width: 77%;
+	float: left;
+	margin-right:12px !important;
+}
+.account_info_blindPhone_btn{
+	width: 20%;
+	float: left;
+}
+.account_info_inputValitor{
+	width: 200px;
+}

@@ -1,0 +1,19 @@
+.web_frontend_console_exception_container{
+	width: 540px;
+	margin:100px auto 0;
+	overflow: hidden;
+}
+.web_frontend_console_exception_container img{
+	float: left;
+}
+.web_frontend_console_exception_desc{
+	float: left;
+	text-align: bottom;
+	width: 412px;
+}
+.web_frontend_console_exception_desc p.title{
+	font-weight: bold;
+	font-size: 20px;
+	margin-top: 40px;
+	display: inline-block;
+}
