@@ -46,7 +46,6 @@ module.exports = {
 			'page': path.resolve(__dirname,'src/page'),
 			'libs': path.resolve(__dirname,'src/libs'),
 			'validate': path.resolve(__dirname,'src/libs/antd-form-validate'),
-			'function': path.resolve(__dirname,'src/libs/function.js'),
 			'common': path.resolve(__dirname,'src/common'),
 		}, 
 		extensions: ['', '.js', '.jsx']

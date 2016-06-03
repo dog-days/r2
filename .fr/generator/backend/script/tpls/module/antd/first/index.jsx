@@ -1,5 +1,5 @@
 import React from 'react'
-import Component from 'libs/react-libs/Component'
+import Component from 'r2/module/ModuleComponent'
 import { connect } from 'react-redux'
 import * as Antd from 'antd'
 import * as actionCreator from './action'

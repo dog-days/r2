@@ -1,17 +1,42 @@
 import React from 'react'
 import Component from 'r2/module/ModuleComponent'
 import { connect } from 'react-redux'
+import * as Antd from 'antd'
+require('css/index.css')
 
 class View extends Component {
 	constructor(props){
 		super(props); 
 	}
 
+	componentDidMount(){
+		var _this = this;
+	}
+
+	componentWillUnmount(){
+	}
+	/**
+	 *	数据处理与适配
+	 */
+	dataAdapter(){
+		var _this = this;
+		return {
+		}
+	}
+	/**
+	 *	事件处理
+	 */
+	events(){
+		var _this = this;
+		return{
+		}
+	}
+
     render() {
 		super.render();
 		return (
 			<div>
-				Hello Word!
+				<Antd.Alert message="这是一个主页页面！没有action.js和reducer.js。 " type="info" showIcon closable/>
 			</div>
 		)	
     }
@@ -21,15 +46,11 @@ var ReduxView = connect((state)=>{
 	};
 })(View)
 ReduxView.defaultProps = Object.assign({},Component.defaultProps,{
-	title: "R2框架",
+	title: "主页",
 	layout: 'page/layout/index',
 	breadcrumb:[
 		{
-			label:'home',
-			link: '/',
-		},
-		{
-			label:'导播活动列表',
+			label:'主页',
 		},
 	],
 });
