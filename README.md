@@ -187,11 +187,11 @@ module.exports = ReduxView;
 ```
 ### 设置浏览器标签title
 R2框架是通过react default props设置title的， 在页面index.jsx中设置如下
-```
+```js
 ReduxView.defaultProps = Object.assign({},Component.defaultProps,{
     title: "title设置处",
 });
-```js
+```
 ### layout切换
 layout默认是`page/layout/index.jsx`
 可以在default props中覆盖，当设置为false时，就没有layout。
