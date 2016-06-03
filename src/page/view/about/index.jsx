@@ -3,9 +3,7 @@ import Component from 'r2/module/ModuleComponent'
 import { connect } from 'react-redux'
 import * as Antd from 'antd'
 import * as actionCreator from './action'
-<!--index_import_begin-->
-import ${import_var} from '${import_libs}'
-<!--index_import_end-->
+
 
 class View extends Component {
 	constructor(props){
@@ -29,7 +27,7 @@ class View extends Component {
 	 */
 	events(){
 		var _this = this;
-		return {
+		return{
 		}
 	}
     render() {
@@ -37,9 +35,8 @@ class View extends Component {
 		var _this = this;
 		let { targetProps } = this.props;
 		return (
-			<div className="${moduleId}">
-				${components}
-				{ this.props.children }
+			<div className="about">
+				<Antd.Alert message="这是一个关于页面！有action.js和reducer.js。" type="info" showIcon closable/>
 			</div>
 		)	
     }
@@ -47,7 +44,15 @@ class View extends Component {
 
 var ReduxView = connect((state)=>{
 	return {
-	    targetProps : state.${moduleId},
+	    targetProps : state.about,
 	};
 })(View)
+ReduxView.defaultProps = Object.assign({},Component.defaultProps,{
+	title: "关于",
+	breadcrumb:[
+		{
+			label:'关于',
+		},
+	],
+});
 module.exports = ReduxView; 

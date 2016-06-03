@@ -1,3 +1,6 @@
+#app_container{
+	height:100%;
+}
 .login-register-con{
 	background:#f4f4f4;	
 	height:100%;
@@ -7,6 +10,7 @@
     min-height: calc(100vh - 155px);
 }
 .login-register-form{
+	position:absolute;
 	margin-top:13%;
 	width:800px;
 	left:50%;
@@ -38,7 +42,7 @@
     display: inline-block;
     width: 42px;
     height: 45px;
-    background: url(../img/login_icon.png) 0 no-repeat;
+    /*background: url(../img/login_icon.png) 0 no-repeat;*/
     background-size: contain;
 }
 .login-form{
@@ -49,8 +53,8 @@
 	margin-bottom:0;
 }
 .login-form .ant-btn-primary {
-    background-color: #F6B028;
-    border-color: #F6B028;
+    /*background-color: #F6B028;*/
+    /*border-color: #F6B028;*/
 }
 .login-form .login-register-form-inner{
 	padding-top:10px;

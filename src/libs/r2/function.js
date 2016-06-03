@@ -1,28 +1,4 @@
 import deprecate from 'core-decorators/lib/deprecate';
-/**
-* 对Date的扩展，将 Date 转化为指定格式的String
-* 月(M)、日(d)、小时(h)、分(m)、秒(s)、季度(q) 可以用 1-2 个占位符， 
-* 年(y)可以用 1-4 个占位符，毫秒(S)只能用 1 个占位符(是 1-3 位的数字) 
-* @example 
-* (new Date()).Format("yyyy-MM-dd hh:mm:ss.S") ==> 2006-07-02 08:09:04.423 
-* (new Date()).Format("yyyy-M-d h:m:s.S")      ==> 2006-7-2 8:9:4.18 
-*/
-Date.prototype.Format = function (fmt) { //author: meizz 
-    var o = {
-        "M+": this.getMonth() + 1, //月份 
-        "d+": this.getDate(), //日 
-        "h+": this.getHours(), //小时 
-        "m+": this.getMinutes(), //分 
-        "s+": this.getSeconds(), //秒 
-        "q+": Math.floor((this.getMonth() + 3) / 3), //季度 
-        "S": this.getMilliseconds() //毫秒 
-    };
-    if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
-    for (var k in o)
-    if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
-    return fmt;
-}
-
 var fn = {
 	/**
 	 *	日期格式转换
@@ -45,41 +21,6 @@ var fn = {
 		for (var k in o)
 		if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
 		return fmt;
-	},
-	/**
-	 * fieldSort Antd Table 简易键值绑定,deprecated,请使用antdTabelFieldBind
-	 * @param  {Array}     data     二维json对象,原始数据
-	 * @param  {Array}     fields   一维数组,需要展示的fields
-	 * @param  {Objct}     columns  二维json对象,antd column设置
-	 * @param  {Function}  callback 参数为data遍历的值和data索引 
-	 * @return {Object}             Antd Table 需要的Json对象
-	 */
-	@deprecate
-	fieldSort(data,fields,columns,callback){
-		var reData = [];
-		if(data && typeof data == "object" && data[0] && !data[0]._reData_){
-			data.forEach(function(value,key){
-				reData[key] = { };
-				callback && callback(value,key);
-				fields.forEach(function(v,k){
-					if(data[key][v] || data[key][v] == 0){
-						reData[key][v] = data[key][v];	
-					}else{
-					}
-				})	
-				//react组件，key值设定
-				reData[key]['key'] = key;
-				data[key]['_key_'] = key;
-			})
-			data[0]._reData_ = reData; 
-		}else if(data && data[0] && typeof data == "object"){
-			reData = data[0]._reData_;
-		}
-		columns && columns.forEach(function(value,key){
-			columns[key]['dataIndex'] = fields[key];
-			columns[key]['key'] = fields[key];
-		})
-		return reData;
 	},
 	/**
 	 * antdTabelFieldBind Antd Table 简易键值绑定
@@ -106,7 +47,7 @@ var fn = {
 		return reData;
 	},
 	/**
-	 * toUpperCase 小写转大写
+	 * toUpperCase 小写转大写,默认只转第一个字母
 	 * @param  {String} string 传进来的字符串
 	 * @param  {Int}    start  开始位置，默认0
 	 * @param  {Int}    end    介绍位置，默认1
@@ -116,21 +57,6 @@ var fn = {
 		var str1 = string.substr(start,end).toUpperCase();
 		var str2 = string.substr(end);
 		return str1 + str2;
-	},
-	/**
-	 * [createAntdColumns  生成数字title,columns，用于隐藏]
-	 * @param  {[Int]} num [description]
-	 * @return {[Object]}     [json对象]
-	 */
-	createAntdColumns(num){
-		var columns = [];
-		for(var i = 0;i < num;i++){
-			columns[i] = { }
-			columns[i].title = i;
-			columns[i].dataIndex = i;
-			columns[i].key = i;
-		}
-		return columns;
 	},
 	/**
 	 * params json对象(一级)拼接url ?后面的参数
@@ -307,13 +233,5 @@ var fn = {
         arr[index1] = arr.splice(index2, 1, arr[index1])[0];
         return arr;
     },
-
-    newArray(start, end) {
-		  let result = [];
-		  for (let i = start; i < end; i++) {
-		    result.push(i);
-		  }
-		  return result;
-	}
 }
 module.exports = fn;

@@ -198,8 +198,10 @@ class RouterAndReducer {
 					v_t = "fr/"+v.name;
 					break;
 			}
-			require += tpl.tagsInfo.tagContents['reducer_reducer']
-							.replace(/\$\{dirname\}/g,v_t)
+			if(v.name != 'index'){
+				require += tpl.tagsInfo.tagContents['reducer_reducer']
+								.replace(/\$\{dirname\}/g,v_t)
+			}
 			if(v.name == 'index'){
 				index = tpl.tagsInfo.tagContents['reducer_index']
 			}
