@@ -1,0 +1,64 @@
+.vm{
+	vertical-align:middle;
+}
+.ml5{
+	margin-left:5px;
+}
+.mr5{
+	margin-right:5px;
+}
+/**creator**/
+.r2g-creator-con{
+	background:#fff;
+	min-height:100%;
+}
+.r2g-creator-con .creator-form{
+	padding:20px 40px;
+}
+.r2g-creator-con .btn-submit{
+	/*width:100%;	*/
+}
+.r2g-creator-con .state_confirm{
+	margin:10px 0 0 0;
+}
+.r2g-creator-con .form_option{
+    padding: 12px 20px 0 0;
+}
+.r2g-creator-con .plus{
+	margin:0 10px 0 10px;
+	color:blue;
+}
+.r2g-creator-con .item_form input{
+	margin-bottom:5px;
+}
+.r2g-creator-con .checkbox_text{
+	margin-right:5px;
+}
+
+/**new**/
+.creator-form-con .deleteInput{
+    font-size: 17px;
+    color: red;
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    cursor: pointer;
+}
+.preview-con{
+	border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.preview-h4{
+    padding: 5px 15px;
+	border-bottom: 1px solid #ccc;
+}
+.preview-h4-last{
+	border-bottom: 0;
+}
+.preview-pre{
+	max-height:400px;
+	overflow:scroll;
+}
+.preview-checkbox{
+	margin-top:9px;
+}

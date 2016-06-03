@@ -1,0 +1,58 @@
+.login-register-con{
+	background:#f4f4f4;	
+	height:100%;
+}
+.login-register-form-con{
+    height: auto;
+    min-height: calc(100vh - 155px);
+}
+.login-register-form{
+	margin-top:13%;
+	width:800px;
+	left:50%;
+	margin-left:-400px;
+	background-color:#fff;
+    box-shadow: 0 0 5px 0 rgba(0,0,0,.1);
+}
+.login-register-form-inner{
+	width:450px;	
+	margin:0 auto;
+	padding:40px;
+}
+.login-register-form-inner .btn-submit{
+	width:100%;
+}
+.login-register-title{
+    padding: 18px 0;
+    background: #F6B028;
+	text-align: center;
+    font-size: 18px;
+    color: #fff;
+}
+/**login**/
+.login-title{
+	background:#fff;
+	color:#666;
+}
+.login-title .logo-img {
+    display: inline-block;
+    width: 42px;
+    height: 45px;
+    background: url(../img/login_icon.png) 0 no-repeat;
+    background-size: contain;
+}
+.login-form{
+	width:500px;
+	margin-left:-250px;
+}
+.mb0{
+	margin-bottom:0;
+}
+.login-form .ant-btn-primary {
+    background-color: #F6B028;
+    border-color: #F6B028;
+}
+.login-form .login-register-form-inner{
+	padding-top:10px;
+}
+

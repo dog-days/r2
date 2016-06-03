@@ -1,0 +1,9 @@
+.storage .ant-tabs.ant-tabs-card .ant-tabs-tab-inner{
+	/*padding:0px 0px 2px 0px;*/
+	cursor:auto;
+}
+.storage .ant-tabs-tab-inner a{
+	/*display:block;*/
+	color:#666;
+	/*padding:7px 16px 6px;*/
+}

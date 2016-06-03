@@ -1,0 +1,151 @@
+.app-btn-con{
+	margin:0px 0 0 0;
+}
+.app-info-table{
+	margin-top:30px;
+}
+.app_info_container{
+    padding: 10px;
+    color:#fff;
+    font-size: 14px;
+}
+.app_info_layout_container .app_info_container h3{
+    font-size: 18px;
+    margin-bottom: 10px;
+    color:#fff;
+}
+.app_info_equipment_stattistics{
+    border:1px solid #fccb7e;
+    background-color: #ffb848;
+}
+.app_info_bandWdith_stattistics{
+    border:1px solid #77e588;
+    background-color: #35aa47;
+}
+.app_info_storage_stattistics{
+    border:1px solid #af5cc1;
+    background-color: #852b99;
+}
+.app_info_flow_stattistics{
+    border: 1px solid #b4cef8;
+    background-color: #4b8df8;
+}
+.app_info_items_container{
+    padding:10px;
+}
+.app_info_items_content{
+    width: 100%;
+}
+.app_info_items_content_li{
+    padding:8px 10px;
+}
+.app_info_items_content_li.background_color{
+    background: #F6F7F9;
+}
+.app_info_items_content_li .app_info_items_span{
+    display: inline-block;
+    font-weight: bold;
+    margin-right: 10px;
+    padding-left: 5px;
+}
+.app-info-table .app_info_items_type_span{
+    display: inline-block;
+    margin-left: 5px;
+    font-size: 16px;
+}
+.app-info-table .app_info_more_message{
+    margin-top: 30px;
+}
+.app-info-table .app_info_more_message h3{
+    color:#000;
+    font-size: 16px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #F7F7F8;
+}
+.app_info_more_message_container{
+    background: #FDFDFD;
+    padding:10px 0;
+    color:#333;
+    font-size: 14px;
+}
+.app_info_more_ranking{
+    margin-top: 5px;
+    border-top:1px solid #F1F0EE;
+    border-bottom:1px solid #F1F0EE;
+    background: #F4F5F8;
+    padding:14px 30px 30px;
+}
+.app_info_more_ranking .ant-table td{
+    border-bottom: 0;
+    text-align: left;
+    width: 15%;
+}
+.app_info_more_message_container .strong{
+    font-weight: bold;
+}
+.app_info_more_ranking .ant-table th{
+    background: transparent;
+    font-size: 14px;
+    color:#333;
+}
+.app_info_more_ranking .ant-table td{
+    padding:10px 8px;
+}
+.app_info_more_ranking .ant-table{
+    width: 70%;
+    margin-left: 5%;
+}
+.app_info_more_ranking .app_info_table_font{
+    padding-left: 5px;
+}
+.app_info_more_ranking .app_info_table_font.red{
+    color:red;
+}
+.app_info_layout_container .app_info_layout_title{
+    font-size: 14px;
+    color:#000;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+.app_info_layout_container h3{
+    font-size: 14px;
+    color:#000;
+    margin-bottom: 7px;
+}
+.app_info_layout_container .app_info_layout_title h3{
+    float: left;
+    display: inline-block;
+    width: 90%;
+}
+.app_info_layout_title_refresh {
+    float: right;
+    display: inline-block;
+    width: 30px;
+    text-align: right;
+    padding-right: 10px;
+}
+.app_info_layout_content{
+    margin-bottom: 10px;
+}
+.app_info_layout_content .app_info_container{
+    width: 49%;
+}
+.app_info_layout_content .app_info_container.left{
+    float: left;
+}
+.app_info_layout_content .app_info_container.right{
+    float: right;
+}
+.app_info_container{
+    border-radius: 5px;
+}
+.app_info_tody .app_info_container {
+    height: 131px;
+}
+.app_info_yesterday{
+    padding-left: 20px;
+}
+.app_info_yesterday .app_info_container{
+    width: 100%;
+    margin-bottom: 20px;
+}

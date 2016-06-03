@@ -1,0 +1,15 @@
+.editInfo .info-line{
+	margin-top:30px;
+	width:550px; 
+}
+.info-line td{
+	height:30px;
+	line-height:30px;
+}
+.info-line .phone-input{
+    width: 77%;
+    margin-right: 12px;
+}
+.info-line .code-input{
+	width:200px;
+}

@@ -1,0 +1,180 @@
+.appManagerStatisticsDistributedMapTypebtn span.equipmentNum,
+.appManagerStatisticsDistributedMapTypebtn span.onlineEquipmentNum,
+.appManagerStatisticsDistributedMapTypebtn span.onlinePushEquipmentNum{
+	width: 15px;
+	height: 15px;
+	display: inline-block;
+	border-radius: 5px;
+	float: left;
+	margin-right: 5px;
+	cursor: pointer;
+}
+.appManagerStatisticsDistributedMapTypebtn span.equipmentNum{
+	background: #2C860E;
+}
+.appManagerStatisticsDistributedMapTypebtn span.onlineEquipmentNum{
+	background: #367503;
+}
+.appManagerStatisticsDistributedMapTypebtn span.onlinePushEquipmentNum{
+	background: #326508;
+}
+.app_manager_statistics_map_tips{
+	background: #fff;
+	border:1px solid #666;
+	border-radius: 5px;
+	padding:5px;
+}
+.app_manager_staristics_container{
+	position: relative;
+}
+.appManagerStatisticsDistributedMapTypebtn{
+	position: absolute;
+	top:0;
+	left: 0;
+}
+.app_manager_staristics_unknow h1{
+	font-size: 14px;
+}
+.app_manager_statistics_query_container h3{
+	color:#000;
+	height: 21px;
+	padding:9px;
+}
+.app_manager_statistics_query_container{
+	margin-bottom: 15px;
+	background: #f9f9f9;
+}
+.app_manager_statistics_query_search form .ant-input{
+	height: 28px;
+}
+.app_manager_statistics_query_search .ant-select-lg .ant-select-selection--single{
+	height: 28px;
+}
+.app_manager_statistics_query_search .ant-select-lg .ant-select-selection--single .ant-select-selection__rendered{
+	line-height: 28px;
+}
+.app_manager_statistics_query_items{
+	float: left;
+	margin-top: 2px;
+}
+.app_manager_statistics_query_search .ant-btn{
+	margin-top: 5px;
+}
+.app_manager_statistics_query_search .app_manager_statistics_icon{
+	width: 5px;
+	height: 21px;
+	display: inline-block;
+	background: #F2861C;
+	margin-right: 5px;
+	float: left;
+}
+.app_manager_statistics_search_items,.app_manager_statistics_search_time{
+	float: left;
+}
+.app_manager_statistics_search_time{
+	width: 380px;
+}
+.app_manager_statistics_search .ant-input,.app_manager_statistics_query_search .ant-input{
+	width: 180px;
+}
+.app_manager_statistics_search_time .ant-form-item-control .col-11,.app_manager_statistics_query_search .ant-form-item-control .col-11{
+	width: 180px;
+	float: left;
+}
+.app_manager_statistics_search_time .ant-form-item-control .col-1,.app_manager_statistics_query_search .ant-form-item-control .col-1{
+	float: left;
+	width: 15px;
+}
+.app_manager_staristics_dataReport{
+	margin-bottom: 15px;
+}
+.app_manager_statistics_dataReport_table_td{
+	text-align: left;
+}
+.app_manager_statistics_query_timeLine_container{
+	padding:10px;
+}
+.app_manager_statistics_query_timeline{
+	width: 100%;
+}
+.app_manager_statistics_query_timeLine_container .timeline{
+	margin: 0px 0 10px 0px;
+	height:20px;
+	width:100%;
+	background:#F6B028;
+	border-radius:10px;
+	overflow:hidden;
+}
+.app_manager_statistics_query_timeLine_container .node{
+	height:100%;
+	float:left;
+}
+.app_manager_statistics_query_timeLine_container .active{
+	height:100%;
+	width:100%;
+}
+.app_manager_statistics_query_timeLine_container .unactive{
+	height:100%;
+	width:100%;
+	background-color:#ccc;
+}
+.app_manager_statistics_query_timeLine_container .ant-timeline-item{
+	padding-bottom: 0;
+}
+.app_manager_statistics_query_timeLine_container .timeline_title{
+	font-weight: bold;
+	font-size: 14px;
+	margin-bottom: 5px;
+}
+.app_manager_equipment_query_container .anticon{
+	margin-right: 5px;
+}
+.app_manager_equipment_query_container h3{
+	color:#000;
+	margin-bottom: 10px;
+}
+.app_manager_equipment_query_container_char{
+	margin-bottom: 20px;
+}
+.app_manager_equipment_query_container_char.bg{
+	background: #f9f9f9;
+}
+.app_manager_equipment_query_other_title{
+	padding:20px 0 10px 20px;
+}
+.app_manager_equipment_query_other_title.MessageBorder{
+	border-bottom: 1px solid #E9E8E5;
+}
+.app_manager_equipment_query_other_title.equipmentMessage{
+	background: #F4F5F8;
+}
+.app_manager_equipment_query_other_message p{
+	line-height: 20px;
+}
+.app_manager_map_refresh{
+	width: 50px;
+	height: 30px;
+	color:red;
+	font-weight: bold;
+	margin-bottom: 10px;
+	cursor: pointer;
+	text-decoration: underline;
+}
+.app_manager_map_refresh .anticon-reload{
+	margin-right: 5px;
+}
+.app_manager_equipment_query_container_char {
+	padding-top: 5px;
+}
+.app_manager_equipment_query_container_char .tooltip,.app_manager_statistics_query_char .tooltip{
+	width: 170px;
+}
+.app_manager_statistics_query_timeline .ant-timeline-item-last{
+	display: none;
+}
+.app_manager_statistics_query_timeline .node .unactive{
+	float: left;
+}
+.app_manager_statistics_query_timeline .node .active{
+	float: left;
+}
