@@ -4,6 +4,7 @@ R2框架旨在快速搭建页面，减少重复工作，减少重复代码，提
 
 ## R2框架相关阅读
 - [webpack配置](http://blog.leanote.com/post/sams/webpack%E7%9F%A5%E8%AF%86%E7%82%B9%E6%BB%B4) 
+
 ## 框架目录
 ```
 R2/
