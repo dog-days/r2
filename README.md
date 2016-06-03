@@ -1,5 +1,5 @@
 # R2框架
-[R2框架](https://github.com/dog-days/r2)(Redux React Framework)主要是基于React、Redux而构建的(其他配合使用的还有当然也使用了react-router,react-router-redux,react-redux)。使用webpack模块加载工具，采用ES62015语法。所有如果要使用本框架，这些知识多多少少都要回点的。同时也使用了[Ant Design React](http://ant.design/#/docs/react/introduce)组件,页面生成功能采用的的组件就是Ant Design,目前只支持这种，后面页面生成也会支持多种UI组件。
+[R2框架](https://github.com/dog-days/r2)(Redux React Framework)主要是基于React、Redux而构建的(其他配合使用的还有当然也使用了react-router,react-router-redux,react-redux,immutable.js)。使用webpack模块加载工具，采用ES62015语法。所有如果要使用本框架，这些知识多多少少都要回点的。同时也使用了[Ant Design React](http://ant.design/#/docs/react/introduce)组件,页面生成功能采用的的组件就是Ant Design,目前只支持这种，后面页面生成也会支持多种UI组件。
 R2框架旨在快速搭建页面，减少重复工作，减少重复代码，提高开发效率。
 
 ## R2框架相关阅读
@@ -103,7 +103,7 @@ module.exports = {
 
 在浏览器中访问`http://localhost:8080/r2g/creator`,目前是长这样子。
 
-![](leanote://file/getImage?fileId=574feb85b271cf4adf000001)
+![](https://leanote.com/api/file/getImage?fileId=574feb88ab64413fd7025d55)
 
 生成页面后运行`npm run ac`即可访问刚生成的页面。
 
@@ -260,9 +260,48 @@ import routes from '.fr/.temp/routes'
 
 //})
 module.exports = routes;
-
 ```
 如果不了解，请先了解[react-router](https://github.com/reactjs/react-router)
+### 定义公共actionCreator
+R2框架公共actionCreator定义于`R2/src/page/commonAction`,建议公共的actionCreator就定义在这里（当然你想定义在其他地方也可以）。commonAction代码如下
+
+```js
+//框架自带公共actionCreator,用不到可以去掉
+import * as r2CommonActionCreator from "r2/actionCreator"
+//自定义公共actionCreator可以在这里定义
+module.exports = Object.assign({},r2CommonActionCreator,{
+    //这里定义
+});
+```
+### 定义公共reducer和绑定公共reducer
+R2框架公共reducer定义于`R2/src/page/commonReducer`,建议公共的reducer就定义在这里（当然你想定义在其他地方也可以）。commonReducer代码如下
+```js
+//框架自带公共reducer,用不到可以去掉
+import * as r2CommonReducer from 'r2/reducer' 
+//自定义公共reducer可以在这里定义
+module.exports = Object.assign({},r2CommonReducer,{
+    //这里定义
+}) 
+```
+绑定reducer
+进入文件`R2/src/reducers.js`
+```js
+import { combineReducers } from 'redux-immutable'//使用immutable情况
+import reducerSetting from ".fr/.temp/reducers"
+const reducer = combineReducers(Object.assign({},reducerSetting,{
+	//自定义reducer,非智能生成可以这里设置
+}))
+export default reducer
+```
+### 全局变量定义
+目前R2框架的全局变量如下，详细情况API。
+
+- r2fn,公共常用方法
+- r2ActionCreator,公共actionCreator
+- r2Reducer,公共reducer
+- r2fetch,R2封装的fetch方法
+- r2Common,公共才设置或其他公共方法或公共变量
+
 ## 其他的一些特殊模式
 为了更好的管理代码，R2框架建议，所有React组件继承`r2/module/BasicComponent`(layout组件式特殊的一种)。之后新的组件包括页面index.jsx组件，数据逻辑处理请全部写在方法dataAdapter中，事件处理写在events中,redux 的dispatch actionCreator写在方法actions中。代码示例如下：
 ```js
@@ -318,8 +357,7 @@ module.exports = View;
 ```
 定义在dataAdapter和events中的方法可以被组件`this`直接访问，R2框架内部做了处理。事件绑定也建议使用thunk模式。
 ## FAQ
-正在整理，
-
+正在整理。 
 ## 感言
 框架正在完善中，感兴趣的同学可有参与进来！或许这个框架正因为你变得更有意义！
 
