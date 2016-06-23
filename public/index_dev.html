@@ -2,6 +2,8 @@
 <html>
     <head>
         <meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+		<link rel="icon" href="/logo.png" type="image/x-icon">
 		<!--<link href="/js/css/styles.css" rel="stylesheet">-->
 		<title></title>
 		<style>
@@ -16,7 +18,8 @@
 			}
 			#init-loading-tip .loading {
 				position: absolute;
-				top: 50%;
+				text-align:center;
+				top: 30%;
 				left: 50%;
 				transform: translate(-50%, -50%);
 			}
@@ -53,6 +56,43 @@
 				0%,100% { transform: scale(0.0) }
 				50% { transform: scale(1.0) }
 			}
+			.ant-alert-error {
+				border: 1px solid #fdc;
+				background-color: #ffeee6;
+			}
+			.ant-alert-with-description.ant-alert-no-icon {
+				padding: 16px;
+			}
+			.ant-alert {
+				position: relative;
+				padding: 8px 8px 8px 16px;
+				border-radius: 6px;
+				color: #666;
+				font-size: 12px;
+				line-height: 16px;
+				margin-bottom: 10px;
+			}
+			.ant-alert-with-description .ant-alert-description {
+				display: block;
+			}
+			.ant-alert-with-description {
+				padding: 16px 16px 16px 69px;
+				position: relative;
+				border-radius: 6px;
+				margin-bottom: 10px;
+				color: #666;
+				line-height: 1.5;
+			}
+			.ant-alert-description {
+				font-size: 12px;
+				color: #999;
+				line-height: 21px;
+				display: none;
+			}
+			.ant-alert-info {
+				border: 1px solid #d5f1fd;
+				background-color: #eaf8fe;
+			}
 		</style>
     </head>
     <body>
@@ -63,20 +103,28 @@
 					<i class="dot2"></i>
 				</div>
 				<span>正在加载</span>
+				<br/>
+				<br/>
+				<div class="ant-alert nt-alert-error ant-alert-with-description ant-alert-no-icon ant-alert-info " style="text-align:left;">
+					<span class="ant-alert-message" style="text-align:center">温馨提示</span>
+					<span class="ant-alert-description">
+						请使用IE11以上,或使用微软Edge、谷歌、火狐、苹果Safari、Opera浏览器访问本网站。
+						也可以使用国内流行浏览器如360安全浏览器（使用时请确保使用比较新版的浏览器，同时要开启极速模式），谢谢！
+					</span>
+				</div>
 			</div>
 		</div>
 		<div id="app_container" >
         </div>
-		<!--兼容IE8以上-->
-		<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.34.2/es6-shim.min.js"></script>-->
-        <!--<script src="/js/libs.bundle.js"></script>-->
-        <!--<script src="/js/vendor.bundle.js"></script>-->
+		<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.34.2/es6-shim.min.js"></script>
 		<script src="/js/bundle.js"></script>
 		<script>
-			var loading = document.getElementById("init-loading-tip")
-			loading.style.display = "none";
+			var hide = document.getElementById("init-loading-tip")
+			hide.style.display = "none";
 		</script>
     </body>
 </html>
+
 
 

@@ -11,8 +11,8 @@ module.exports = function password(form,reCheck=true,length=6,msg=[ ]){
 		"请填写密码！",
 		"请再次输入密码！",
 		"两次输入密码不一致！",
-		"密码长度过短！",
-		"密码格式不对，需要数字和英文字母结合！",
+		"请输入6位以上的密码！",
+		"密码格式不对，需要字母和数字结合！",
 	],msg)
 	return {
 		pwd(){
@@ -53,9 +53,10 @@ module.exports = function password(form,reCheck=true,length=6,msg=[ ]){
 		},
 		checkPass(rule, value, callback) {
 			let { validateFields } = form;
-			var pass = new RegExp("(.*)[a-zA-Z](.*)").test(value);
+			//console.debug(value)
+			var pass = new RegExp("^[A-Za-z]+[0-9]+[A-Za-z0-9]*|[0-9]+[A-Za-z]+[A-Za-z0-9]*$").test(value);
 			//console.debug(pass,value.length)
-			if(value == ""){
+			if(value == "" || value == undefined){
 				callback();
 				return;
 			}

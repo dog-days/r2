@@ -17,6 +17,10 @@ module.exports = function emptyProps(form,msg=[]) {
 	*/
 	return function(name,errorMessage,length=[0,null],lengthMsg=[]){
 		function validLength(rule, value, callback){
+			if(value == undefined){
+				callback()
+				return;
+			}
 			if(value !== "" && value.length >= length[0]){
 				if(length[0] && value.length > length[1]){
 					callback(lengthMsg[1] || msg[2]);
