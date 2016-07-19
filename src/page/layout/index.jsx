@@ -36,11 +36,6 @@ class Layout extends LayoutComponent{
 							登陆
 						</Link>
 					</Menu.Item>
-					<Menu.Item key="chat">
-						<Link to="/chat">
-							多人聊天室	
-						</Link>
-					</Menu.Item>
 				</Menu>
 				<div className="r2-breadcrumb">
 					{ this.breadcrumb || "" }
