@@ -1,3 +1,10 @@
+//es6支持IE
+Object.assign = Object.assign || require('object.assign/polyfill')(); // returns native method if compliant
+Object.keys = Object.keys.shim || Object.keys; 
+
+
+
+
 //公共方法
 window.r2fn = require('./function');;
 //公共Redux actionCreator

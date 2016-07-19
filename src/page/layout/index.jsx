@@ -15,7 +15,7 @@ class Layout extends LayoutComponent{
 		super.render();
 		return (
 			<div className="r2-layout">
-				<Menu onClick={this.handleClick} selectedKeys={[this.state.current]} mode="horizontal" theme="dark">
+				<Menu onClick={this.handleClick} mode="horizontal" theme="dark">
 					<Menu.Item key="demo">
 						<Link to="/">
 							R2框架
@@ -58,5 +58,7 @@ function mapStateToProps(state){
 	};
 }
 Layout = connect(mapStateToProps)(Layout)
+Layout.defaultProps = Object.assign({},LayoutComponent.defaultProps,{ 
+})
 module.exports = Layout; 
 

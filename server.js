@@ -18,7 +18,7 @@ app.get('*', function(req, res) {
 });
 //设置路径不存在(webpack-dev-middleware内存中也不存在)时访问的目录,不可以放在地址重写前，要不要会优先
 app.use(express.static(path.join(__dirname, 'public')));
-var host = "192.168.88.171"
+var host = "localhost"
 app.listen(port, host, function(err) {
     if (err) {
         console.log(err);

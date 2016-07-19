@@ -27,7 +27,7 @@ class LayoutAntdComponent extends BasicComponent {
 					var c_props = this.props.contents.props;
 					this.getParamsOfId(c_props);
 				}
-				//console.debug(this.r2Params)
+				//console.debug(this.props)
 				this.breadcrumb = (
 					<Breadcrumb className="breadcrumb">
 						<Breadcrumb.Item>

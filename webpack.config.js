@@ -26,13 +26,13 @@ module.exports = {
     },
 	module: {
         loaders: [
-            { test: /\.css$/, loader: "style!css" },
+			{ test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/, loader: 'url-loader?limit=50000&name=[path][name].[ext]'},
 			{ 
             	test: /\.js[x]?$/, 
             	loader: 'babel',
 				exclude: /node_modules/,//解析node_modules的es6语法 
             },
-			{test: /\.(jpg|png|gif)$/, loader: "url?limit=8192"},
+            { test: /\.css$/, loader: "style!css" },
         ]
     },
 	resolve: {
