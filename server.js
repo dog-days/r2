@@ -2,7 +2,7 @@ var path = require('path');
 var express = require('express');
 var webpack = require('webpack');
 var config = require('./webpack.config');
-var port = 8080;
+var port = 8888;
 var app = express();
 var compiler = webpack(config);
 
@@ -18,12 +18,13 @@ app.get('*', function(req, res) {
 });
 //设置路径不存在(webpack-dev-middleware内存中也不存在)时访问的目录,不可以放在地址重写前，要不要会优先
 app.use(express.static(path.join(__dirname, 'public')));
-app.listen(port, 'localhost', function(err) {
+var host = "localhost"
+app.listen(port, host, function(err) {
     if (err) {
         console.log(err);
         return;
     }
-    console.info("==> 🌎  Listening on port %s. Open up http://localhost:%s/ in your browser.", port, port)
+    console.info("==> 🌎  Listening on port %s. Open up http://"+host+":%s/ in your browser.", port, port)
 });
 
 //new WebpackDevServer(webpack(config), {

@@ -14,13 +14,13 @@ var config = Object.assign({}, webpack_config, {
     }),
 	module: {
         loaders: [
-			{test: /\.(jpg|png)$/, loader: "url?limit=8192"},
+			{ test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/, loader: 'url-loader?limit=50000&name=[path][name].[ext]'},
 			{ 
             	test: /\.js[x]?$/, 
             	loader: 'babel',
 				exclude: /node_modules/,//设置node_modules目录为根目录下的node_modules,根目录以package为参考
             },
-            { test: /\.css$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader") },
+            { test: /\.css$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader","sass-loader") },
         ]
     },
     plugins: [
@@ -57,7 +57,10 @@ module.exports = function(grunt) {
                 cwd: 'public/',
                 src: ['**/*'],
             }
-        }
+        },
+		clean: {
+			folder: ['public/js/']
+		}
         
     });
     //grunt.loadNpmTasks('grunt-contrib-compass');
@@ -67,9 +70,9 @@ module.exports = function(grunt) {
     //grunt.loadNpmTasks('grunt-contrib-copy');
     //grunt.loadNpmTasks('grunt-string-replace');	
     //grunt.loadNpmTasks('grunt-contrib-htmlmin');
-    //grunt.loadNpmTasks('grunt-contrib-clean');	
     //grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-contrib-clean');	
     grunt.loadNpmTasks('grunt-contrib-compress');
     grunt.loadNpmTasks('grunt-webpack');
-    grunt.registerTask("default", ['webpack','compress']);
+    grunt.registerTask("default", ['clean','webpack','compress']);
 }

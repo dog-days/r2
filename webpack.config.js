@@ -7,7 +7,7 @@ var path = require('path')
 var entry;
 var NODE_ENV = 'development';
 entry = [
-    'eventsource-polyfill', // necessary for hot reloading with IE,没再IE试过，也基本不会在IE调试
+    'eventsource-polyfill', // necessary for hot reloading with IE,没在IE试过，也基本不会在IE调试
     'webpack-hot-middleware/client',
     './src/index.jsx'
 ]
@@ -26,15 +26,21 @@ module.exports = {
     },
 	module: {
         loaders: [
-            { test: /\.css$/, loader: "style!css" },
+			{ test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/, loader: 'url-loader?limit=50000&name=[path][name].[ext]'},
 			{ 
             	test: /\.js[x]?$/, 
             	loader: 'babel',
 				exclude: /node_modules/,//解析node_modules的es6语法 
             },
-			{test: /\.(jpg|png|gif)$/, loader: "url?limit=8192"},
-        ]
+            { test: /\.css$/, loader: "style!css" },
+            { test: /\.scss$/, loader: "style!css!sass" },
+        ],
     },
+	sassLoader: {
+		includePaths: [
+			path.resolve(__dirname, "style/css"),
+		]
+	},
 	resolve: {
 		alias: {
 			'r2': path.resolve(__dirname,'src/libs/r2'),
