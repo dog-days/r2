@@ -33,8 +33,14 @@ module.exports = {
 				exclude: /node_modules/,//解析node_modules的es6语法 
             },
             { test: /\.css$/, loader: "style!css" },
-        ]
+            { test: /\.scss$/, loader: "style!css!sass" },
+        ],
     },
+	sassLoader: {
+		includePaths: [
+			path.resolve(__dirname, "style/css"),
+		]
+	},
 	resolve: {
 		alias: {
 			'r2': path.resolve(__dirname,'src/libs/r2'),
