@@ -7,7 +7,7 @@ var path = require('path')
 var entry;
 var NODE_ENV = 'development';
 entry = [
-    'eventsource-polyfill', // necessary for hot reloading with IE,没再IE试过，也基本不会在IE调试
+    'eventsource-polyfill', // necessary for hot reloading with IE,没在IE试过，也基本不会在IE调试
     'webpack-hot-middleware/client',
     './src/index.jsx'
 ]

@@ -1,7 +1,7 @@
 {
 	"presets": ["react", "es2015","stage-0"],
 	"plugins": [
-		["antd", { "style": "css" }],
+		["antd"],
 		"transform-decorators-legacy",
 	],
 	"env": {

@@ -3,6 +3,8 @@ import LayoutComponent from 'r2/module/LayoutAntdComponent'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import { Menu } from 'antd'
+
+require('antd/dist/antd.css')
 require('css/main.css')
 require('css/layout.css')
 
