@@ -1,0 +1,27 @@
+//margin各种方向值设置mixin
+@mixin marginTop($px){
+	margin-top: $px + px;
+}
+@mixin marginBottom($px){
+	margin-bottom: $px + px;
+}
+@mixin marginLeft($px){
+	margin-left: $px + px;
+}
+@mixin marginRight($px){
+	margin-right: $px + px;
+}
+//padding各种方向值设置mixin
+@mixin paddingTop($px){
+	padding-top: $px + px;
+}
+@mixin paddingBottom($px){
+	padding-bottom: $px + px;
+}
+@mixin paddingLeft($px){
+	padding-left: $px + px;
+}
+@mixin paddingRight($px){
+	padding-right: $px + px;
+}
+

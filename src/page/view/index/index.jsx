@@ -35,8 +35,8 @@ class View extends Component {
     render() {
 		super.render();
 		return (
-			<div>
-				<Antd.Alert message="这是一个主页页面！没有action.js和reducer.js。 " type="info" showIcon closable/>
+			<div className="mt30 ml30 mr30">
+				<Antd.Alert message="这是一个主页页面！没有action.js和reducer.js。 " type="info" showIcon closable />
 			</div>
 		)	
     }
