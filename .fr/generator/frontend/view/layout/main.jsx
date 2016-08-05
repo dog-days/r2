@@ -2,6 +2,9 @@ import React from 'react'
 import component from 'r2/module/ModuleComponent'
 import { connect } from 'react-redux'
 import * as Antd from 'antd'
+
+require('antd/dist/antd.css')
+require('css/base.scss')
 require('frontend/style/css/main.css')
 
 class Layout extends component {
@@ -12,7 +15,7 @@ class Layout extends component {
     render() {
 		super.render();
 		return(
-			<div className="r2g-creator-con">
+			<div className="r2g-creator-con ">
 				<Antd.Menu selectedKeys={["2"]} theme={"dark"} mode="horizontal">
 					<Antd.Menu.Item key="1" className="">
 						<h2>

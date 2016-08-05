@@ -13,10 +13,9 @@ var cors = require('koa-cors');
 
 var app = koa();
 var options = {
-  "origin": "*",
-  "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
-  "credentials": true,
-  "preflightContinue": false 
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true,
+  preflightContinue: false 
 };
 app.use(cors(options));
 /**
