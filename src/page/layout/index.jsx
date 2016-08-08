@@ -7,7 +7,7 @@ import { Menu } from 'antd'
 require('antd/dist/antd.css')
 require('css/main.css')
 require('css/layout.css')
-require('css/chat.scss')
+require('css/base.scss')
 
 class Layout extends LayoutComponent{
 	constructor(props){

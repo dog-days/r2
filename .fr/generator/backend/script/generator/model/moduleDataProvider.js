@@ -38,19 +38,6 @@ class Db{
 			}
 		);
 	}
-
-	find(options){
-		this.db.each(options.sql,options.params,(err,row)=>{
-			if(err){
-				util.log(`Fail to query` + err);
-				options.callback && options.callback(error,null);
-			}else{
-				options.callback && options.callback(null,row);
-			}
-		})	
-		return [] 
-	}
-
 }
 
 module.exports = Db;
