@@ -66,6 +66,7 @@
     "i": "npm install && cd ./.end && npm install && cd ../",
     "ac": "export NODE_ENV=development && node --harmony ./.end/script/createRouteAndReducer.js",
     "startboth": "npm start & npm run startend",
+    "startwboth": "npm run startw & npm run startend",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "sam",
