@@ -45,7 +45,7 @@ module.exports = function* creator(next) {
 		data: {
 			total: total[0]["count(*)"],
 			current: parseInt(page),
-			data,
+			entries: data,
 		},
 	};
 	this.status = 200;

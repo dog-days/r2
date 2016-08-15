@@ -1,4 +1,6 @@
 import deprecate from 'core-decorators/lib/deprecate';
+import Immutable from 'immutable'
+import { is } from 'immutable'
 var fn = {
 	/**
 	 *	日期格式转换
@@ -134,20 +136,22 @@ var fn = {
 	/**
 	 *	带宽比特单位转换为Kb,Mb,Gb单位
 	 *@param {int} t_value 转换值
+	 *@param {stirng} str 数据不存在替换字符串 
 	 */
-	transformToKbMbGb(t_value,has8){
-		if(!has8){
-			t_value = t_value * 8;
-		}
+	transformToKbMbGb(t_value,str="-"){
 		let value = 0;
-		if(t_value > 1000 * 1000 * 1000){
+		if(t_value >= 1000 * 1000 * 1000){
 			value = Math.round(t_value / 1000 / 1000 / 1000 * 100 ) / 100  + 'Gb';	
-		}else if(t_value > 1000 * 1000){
+		}else if(t_value >= 1000 * 1000){
 			value = Math.round(t_value / 1000 / 1000 * 100) / 100  + 'Mb';	
-		}else if(t_value > 1000){
+		}else if(t_value >= 1000){
 			value = Math.round(t_value / 1000 * 100) / 100 + 'Kb';	
 		}else if(t_value != 0){
-			value = t_value + '字节';	
+			value = t_value + 'kbps';	
+		}else if(t_value == 0){
+			value = t_value;	
+		}else if(!t_value || isNaN(t_value)){
+			return str;
 		}
 		return value;
 	},
@@ -157,29 +161,36 @@ var fn = {
 	 */
 	flowTransformToKbMBGB(t_value){
 		let value = 0;
-		if(t_value > 1024 * 1024 * 1024){
+		if(t_value >= 1024 * 1024 * 1024){
 			value = Math.round(t_value / 1024 / 1024 / 1024 * 100 ) / 100  + 'GB';	
-		}else if(t_value > 1024 * 1024){
+		}else if(t_value >= 1024 * 1024){
 			value = Math.round(t_value / 1024 / 1024 * 100) / 100  + 'MB';	
-		}else if(t_value > 1024){
+		}else if(t_value >= 1024){
 			value = Math.round(t_value / 1024 * 100) / 100 + 'KB';	
 		}else if(t_value != 0){
-			value = t_value + '字节';	
+			value = t_value + 'B';	
 		}
 		return value;
 	},
 	/**
-	 *	事件转换 秒单位转换为分,小时
+	 * 秒转换成分，时，天	
 	 *@param {int} t_value 转换值
+	 *@param {stirng} str 数据不存在替换字符串 
 	 */
-	secondTranformToMH(t_value){
+	secondTranformToMHD(t_value,str="-"){
 		let value = 0;
-		if(t_value > 60 * 60){
+		if(t_value > 60 * 60 * 24){
+			value = Math.round(t_value / 60 / 60 / 24 * 100 ) / 100  + '天';
+		}else if(t_value > 60 * 60){
 			value = Math.round(t_value / 60 / 60 * 100 ) / 100  + '小时';	
 		}else if(t_value > 60){
 			value = Math.round(t_value / 60 * 100) / 100  + '分';	
 		}else if(t_value != 0){
 			value = t_value + '秒';	
+		}else if(t_value == 0){
+			value = t_value;	
+		}else if(!t_value || isNaN(t_value)){
+			return str;
 		}
 		return value;
 	},
@@ -225,13 +236,93 @@ var fn = {
 	/**
 	 * 交换数组指定的的两个键值位置,index2 > index1 下移，相反上移
 	 * @param {Array} arr 需要处理的数组
-	 * @param {index1} index1 索引位置1
-	 * @param {index2} index2 索引位置2
+	 * @param {Int} index1 索引位置1
+	 * @param {Int} index2 索引位置2
 	 * @return {Array} 返回处理的数组
 	 */
 	swapArrayItem(arr, index1, index2) {
         arr[index1] = arr.splice(index2, 1, arr[index1])[0];
         return arr;
     },
+	/**
+	* 判断Object对象是否定义到指定索引
+	* @param {Object} 需要判断的对象
+	* @param {Array} 对象索引层层递进 
+	*/
+	isObjExist(obj,arr){
+		if(!obj) return false;
+		var flag;
+		switch(arr.length){
+			case 1:
+				flag = obj[arr[0]];	
+				break;
+			case 2:
+				flag = obj[arr[0]] && obj[arr[0]][arr[1]] ;	
+				break;
+			case 3:
+				flag = obj[arr[0]] && obj[arr[0]][arr[1]] && obj[arr[0]][arr[1]][arr[2]];	
+				break;
+			case 4:
+				flag = obj[arr[0]] && obj[arr[0]][arr[1]] && obj[arr[0]][arr[1]][arr[2]] && obj[arr[0]][arr[1]][arr[2]][arr[3]];	
+				break;
+			case 5:
+				flag = obj[arr[0]] && obj[arr[0]][arr[1]] && obj[arr[0]][arr[1]][arr[2]] 
+					&& obj[arr[0]][arr[1]][arr[2]][arr[3]] && obj[arr[0]][arr[1]][arr[2]][arr[3]][arr[4]];	
+				break;
+			case 6:
+				flag = obj[arr[0]] && obj[arr[0]][arr[1]] && obj[arr[0]][arr[1]][arr[2]] 
+					&& obj[arr[0]][arr[1]][arr[2]][arr[3]] && obj[arr[0]][arr[1]][arr[2]][arr[3]][arr[4]]	
+					&& obj[arr[0]][arr[1]][arr[2]][arr[3]][arr[4]][arr[5]];
+				break;
+		}
+		return flag;
+	
+	},
+	/**
+	* 日期对象转时间戳 
+	* @param {Object} date 日期对象 
+	* @return {Int} 时间戳 
+	*/
+	getDateTimestamp(date){
+		if(!date) return "";
+		return Math.floor(+date / 1000)	
+	},
+	/**
+	* 根据传进来的Imutable数据,判断是否更新React组件
+	* @param {Object} thisProps  
+	* @param {Object} nextProps  
+	* @param {Object} propsIndex props的索引 
+	* @return {Boolean || undefined} true or undefined
+	*/
+	shouldDataUpdate(thisProps,nextProps={},propsIndex){
+		var thisData = thisProps[propsIndex];
+		var nextData = nextProps[propsIndex];
+		//if(thisData && nextData){
+			//console.debug(thisData.toJS(),nextData.toJS())
+		//}
+		if (!is(thisData,nextData)) {
+			return true;
+		}
+		return false;
+	},
+	/**
+	* 根据传进来的Imutable数据,判断是否更新React组件
+	* @param {Object || Imutable Object} state redux reducer 参数state 
+	* @param {Object} action redux reducer参数 action 
+	* @param {Function} callbackBefore 本函数其他处理前执行的回调函数
+	* @return {Imutable Object} merge后的Imutable对象 
+	*/
+	imutableReducer(state,action,callbackBefore){
+		callbackBefore && callbackBefore();
+		var data;
+		if(state.toJS){
+			data = state.mergeDeep(action)
+		}else{
+			data = Object.assign({},state,action);
+		}
+		var i_state = Immutable.fromJS(data)
+		return i_state; 	
+	}
 }
 module.exports = fn;
+

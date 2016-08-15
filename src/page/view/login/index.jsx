@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import * as Antd from 'antd'
 import * as actionCreator from './action'
 import LoginForm from './components/Form'
+require('antd/dist/antd.css')
 require('css/login.css')
 require('css/main.css')
 

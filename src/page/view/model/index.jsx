@@ -3,6 +3,8 @@ import Component from 'r2/module/ModuleComponent'
 import { connect } from 'react-redux'
 import * as Antd from 'antd'
 import * as actionCreator from './action'
+import Table from 'common/components/Table'
+import Immutable from 'immutable'
 
 
 class View extends Component {
@@ -11,10 +13,17 @@ class View extends Component {
 	}
 
 	componentDidMount(){
-		this.props.dispatch(actionCreator.fetchData())	
+		this.getData(1)
 	}
 
 	componentWillUnmount(){
+	}
+
+	getData(page){
+		var params = { 
+			page,
+		}
+		this.props.dispatch(actionCreator.fetchData(params))	
 	}
 	/**
 	 *	数据处理与适配
@@ -33,10 +42,10 @@ class View extends Component {
 		return {
 			handlePagination(){
 				return (page)=>{
-					var params = { 
-						page,
-					}
-					this.props.dispatch(actionCreator.fetchData(params))	
+					var loadingHide = Antd.message.loading("",0)
+					this.props.dispatch(actionCreator.fetchPaginationData(page,null,(allJson)=>{
+						loadingHide()
+					}))
 				}
 			},
 		}
@@ -44,25 +53,20 @@ class View extends Component {
     render() {
 		super.render();
 		let { targetProps } = this.props;
-		var targetData,tableData;
-		if(targetProps.main && targetProps.main.result && targetProps.main.result.data){
-			targetData = targetProps.main.result.data;
-			this.table.getCurrentComponent(this,targetProps.main.result.data.data)
-			tableData = this.table.dataAdapter(targetProps.main.result.data.data)
+		var targetObject;
+		var targetData,loading = true;
+		if(targetProps.getIn && targetProps.getIn(["main","result","data"])){
+			targetData = targetProps.getIn(["main","result","data"]);
+			loading  = targetProps.getIn(["main","isFetching"]);
 		}
 		return (
-			<div className="model">
-				{
-					false && targetProps.main && targetProps.main.isFetching &&
-					<Antd.Spin className="mt15" size="large"/>
-				}
-				<Antd.Table className="mt15" columns={this.table.columns} loading={ !targetProps.main || targetProps.main.isFetching }
-					dataSource={ tableData } size="middle" bordered pagination={ false }/>	
-				{
-					tableData && targetData.total >= 2 * actionCreator.size && 
-					<Antd.Pagination onChange={ this.handlePagination() } className="mt15" defaultCurrent={targetData.current} 
-						defaultPageSize={ actionCreator.size } total={ targetData.total}/>	
-				}
+			<div className="model-view">
+				<Table 
+					dataSet={ this.table } 
+					data={ targetData } 
+					loading={ loading } 
+					handlePagination={ this.handlePagination() }
+					/>	
 			</div>
 		)	
     }
