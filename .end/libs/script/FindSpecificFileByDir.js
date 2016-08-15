@@ -1,6 +1,7 @@
 'use strict';
-import fs from "fs"
-import path from "path"
+
+var path = require("path")
+var fs = require("fs")
 
 /**
  * @param {object} config 

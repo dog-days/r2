@@ -5,14 +5,6 @@ var childRoutes = [
 	
 	require('src/page/view/login/_route.js'),
 	
-	require('src/page/.viewModel/emptyPage/_route.js'),
-	
-	require('src/page/.viewModel/noactionrecucer/_route.js'),
-	
-	require('src/page/.viewModel/tableNoPagination/_route.js'),
-	
-	require('src/page/.viewModel/tableWithPagination/_route.js'),
-	
 	{
 		path: '*',
 		getComponent(location, cb) {

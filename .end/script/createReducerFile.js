@@ -1,10 +1,10 @@
 'use strict';
 
-import fs from "fs"
-import path from "path"
-import ReadDirTpl from "../libs/script/ReadDirTpl"
-import FindSpecificFileByDir from "../libs/script/FindSpecificFileByDir"
-import getReducers from "../libs/script/getReducers"
+var fs = require("fs")
+var path = require("path")
+var ReadDirTpl = require("../libs/script/ReadDirTpl")
+var FindSpecificFileByDir = require("../libs/script/FindSpecificFileByDir")
+var getReducers = require("../libs/script/getReducers")
 
 class Script {
 	constructor(config){
