@@ -1,4 +1,5 @@
-import routes from '.fr/.temp/routes'
+import routes from '.end/temp/routes'
+
 /**
  *	 var routes = {
  *		path : "/",

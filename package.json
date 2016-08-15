@@ -60,7 +60,7 @@
     "webpack-hot-middleware": "^2.6.4"
   },
   "scripts": {
-    "startend": "node --harmony ./.fr/generator/backend/app.js",
+    "startend": "node --harmony ./.end/index.js",
     "buildw": "set NODE_ENV=production && node --harmony ./.end/script/createRouteAndReducer.js && grunt",
     "startw": "set NODE_ENV=development && node server.js",
     "build": "export NODE_ENV=production && node --harmony ./.end/script/createRouteAndReducer.js && grunt",

@@ -7,20 +7,20 @@ var createReducer = require("./createReducerFile.js")
 
 new createRoute({
 	path: [
-		"src", 
-		".fr/generator/frontend", 
+		"src/page/view", 
+		"src/page/.viewModel", 
 	],
 	tplPath: ".end/script/route_tpl",
 	fileName:"_route.js",
-	savePath:".fr/.temp/routes.js",
+	savePath:".end/temp/routes.js",
 });
 
 new createReducer({
 	path: [
-		"src", 
-		".fr/generator/frontend", 
+		"src/page/view", 
+		"src/page/.viewModel", 
 	],
-	tplPath: ".end/script/tpl",
+	tplPath: ".end/script/reducer_tpl",
 	fileName:"reducer.js",
-	savePath:".fr/.temp/reducers.js",
+	savePath:".end/temp/reducers.js",
 });

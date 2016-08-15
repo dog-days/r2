@@ -6,7 +6,7 @@ var childRoutes = [
 	{
 		path: '*',
 		getComponent(location, cb) {
-			require.ensure([], (require) => {
+			require.ensure([], function(require){
 				cb(null, require('page/nopage'))
 			},"nopage")
 		}
