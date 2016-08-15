@@ -1,6 +1,6 @@
 'use strict';
-import fs from "fs"
-import path from "path"
+var fs = require("fs")
+var path = require("path")
 
 /**
  * @param {Array} filesPath 指定文件的路径

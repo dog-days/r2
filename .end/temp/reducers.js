@@ -10,12 +10,6 @@ import { login } from 'src/page/view/login/reducer.js'
 
 import { loginForm } from 'src/page/view/login/reducer.js'
 
-import { emptyPage } from 'src/page/.viewModel/emptyPage/reducer.js'
-
-import { tableNoPagination } from 'src/page/.viewModel/tableNoPagination/reducer.js'
-
-import { tableWithPagination } from 'src/page/.viewModel/tableWithPagination/reducer.js'
-
 
 const initialState = Immutable.fromJS({
     locationBeforeTransitions: null
@@ -36,12 +30,6 @@ let reducer = {
 	login,
 
 	loginForm,
-
-	emptyPage,
-
-	tableNoPagination,
-
-	tableWithPagination,
 
 	routing: immutableReducer
 }
