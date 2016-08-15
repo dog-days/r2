@@ -44,8 +44,7 @@ module.exports = {
 	resolve: {
 		alias: {
 			'r2': path.resolve(__dirname,'src/libs/r2'),
-			'.fr': path.resolve(__dirname,'.fr'),
-			'frontend': path.resolve(__dirname,'.fr/generator/frontend'),
+			'.end': path.resolve(__dirname,'.end'),
 			'src': path.resolve(__dirname,'src'),
 			'css': path.resolve(__dirname,'style/css'),
 			'img': path.resolve(__dirname,'style/img'),
