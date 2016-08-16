@@ -22,22 +22,23 @@ R2/
         + common                   #当前项目公共component和设置等存放处,约定方式
         - page/                    #项目页面模块开发代码，不同应用会有不用模块,有些文件是名称是不变的
             App.js                 #路由第一层"/"component
-            commonAction.js        #可自定义的公共actionCreator
+            action.js        #可自定义的公共actionCreator
             reducer.js             #可自定义的公共reducer
             + layout               #layout文件存放处
             + nopage               #404页面
+            + .viewModel           #页面模板（后面详说）
             - view                 #各个页面存放位置
                 - index/           #应用页面demo,参考使用
                     index.js       #index页面入口文件
-                    action.js      #Redux action，demo action任务定义处
-                    reducer.js     #Redux reducer，demo reducer定义处
-    + .fr/                         #智能功能开发处，框架使用者不用理会
+                    action.js      #Redux action，demo action任务定义处，当然也可以没有
+                    reducer.js     #Redux reducer，demo reducer定义处，当然也可以没有
+    + .end/                        #智能功能开发处，框架使用者不用理会
     - style/                       #样式图片存放处,这个看喜好吧,约定方式
         + css/                     #css样式
         + img/                     #图片存放处
-    Gruntfile.js                   #grunt配置文件,生成环境
+    Gruntfile.js                   #grunt配置文件，根据需要自己拓展配置h打包生成环境
     server.js                      #启动服务配置文件,开发环境
-    webpack.config.js              #webpack配置，开发环境 
+    webpack.config.js              #webpack配置，根据需要自己拓展配置，开发环境 
     package.js                     #npm配置文件
     .babelrc                       #babel设置
     .gitignore                     #git提交忽略设置
@@ -51,15 +52,17 @@ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | b
 //安装最新版node,并可以立刻使用node不用重启终端,安装时好像被墙了，通过vpn装成功
 nvm install node && nvm alias default node
 ```
-npm安装如果被墙可以使用[淘宝镜像](http://npm.taobao.org/)
+npm安装如果被墙可以使用[淘宝镜像](http://npm.taobao.org/)，但是使用cnpm有时候会安装不完全，下面会特别说明。
 ```
 //如果没有安装grunt，请先安装要grunt。
 npm install -g grunt-cli //安装全局命令
 npm install //等待安装各种需要的package
+cd .end && npm install//安装本框架node后端支持，部分功能需要用到
 npm run ac
 npm start
 ```
-然后直接在浏览中打开`http://localhost:8080/`,即可访问。
+或者把`npm intall && cd .end && npm install`替换成`npm run i` 或 `npm run ci`(需要淘宝镜像支持)
+然后直接在浏览中打开`http://localhost:8888/`,即可访问。
 ### R2框架命令
 R2框架中自定义了如下命令
 ```
@@ -72,7 +75,14 @@ npm build //打包生成生产环境文件，windows平台请使用,npm run buil
 npm run ac //智能Route和Reducer生成命令,情况后续说明
 ```
 ```
-npm run startend //开启R2框架后端服务支持，在智能构建页面是需要开启，详细后续说明
+npm run startend //开启R2框架后端服务支持，使用页面新建功能时最好开启需要开启，要不然看不了数据，详细后续说明
+```
+```
+npm run startboth //运行所有前端webpack和本框架的后端服务,windows使用npm run startwboth
+```
+`npm run startboth`相当于`npm start && npm run startboth`
+```
+npm run cv //页面生成,后续详说
 ```
 ## 使用智能构建功能
 经过上面的步骤可以运行看到页面了，现在开始看如何搭建一个新的页面，在搭建页面前先介绍R2框架自带的一些功能。
@@ -82,7 +92,7 @@ npm run startend //开启R2框架后端服务支持，在智能构建页面是�
 ```
 npm run ac  // ac全称auto creator
 ```
-不过要注意的是，view文件要按照约定位置放好，`R2/src/page/view`目录下新建文件夹就属于一个新页面（要有index.jsx文件才算，action.js和reducer.js可有可以无）,而reducer.js文件需要使用如下格式才可以被识别
+不过要注意的是，view文件要按照约定位置放好，`R2/src/page/view`目录下新建文件夹就属于一个新页面(必须包含文件_route.js),而reducer生成条件是在view目录下新建reducer.js就会被视为新建reducer，本框架强烈建议在当前页面文件夹中新建reducer.js，reducer.js格式如下:
 ```js
 export function origin(state = {}, action) {
     switch (action.type) {
@@ -99,56 +109,21 @@ module.exports = {
 }
 ```
 ### 页面生成器
-如果有使用过PHP Yii框架的gii，那就对这个功能有大概的理解了。R2框架也是模仿这种做法的,功能也正在逐步添加完善。
+需要使用到以下命令
+```
+npm run cv -- options 
+```
+options如下
 
-在浏览器中访问`http://localhost:8080/r2g/creator`,目前是长这样子。
+| 缩写| 全称 | 描述 |
+| ---- | ----------- | ---- |
+| -h | --help | 帮助命令 |
+| -V | --version | 版本命令 |
+| -e | --emptyPage | 创建emptyPage视图模板 |
+| -n | --noactionreducer | 创建noactionreducer视图模板 |
+| -t | --tableNoPagination | 创建tableNoPagination视图模板 |
+| -p | --tableWithPagination | 创建tableWithPagination视图模板 |
 
-![](https://leanote.com/api/file/getImage?fileId=574feb88ab64413fd7025d55)
-
-生成页面后运行`npm run ac`即可访问刚生成的页面。
-
-## 页面新建约定 
-页面都是在`R2/src/page/view`中新建,才有效。
-### 新建一级页面
-所谓一级页面就是指路由嵌套一层，如
-```js
-<Router history={browserHistory}>
-    <Route path="/" component={App}>
-    <Route path="about" component={About}/>
-</Router>
-```
-新建文件夹目录如下
-```
-- about/
-    index.jsx
-    action.js //不是必须的 
-    reducer.js //不是必须的 
-```
-### 新建二级页面
-所谓二级页面就是指路由嵌套两层，而且R2框架智能生成的路由参数都是`:id`，目前还不支持变化。如
-```js
-<Router history={browserHistory}>
-    <Route path="/" component={App}>
-    <Route path="about" component={About}/>
-    <Route path="users" component={Users}>
-        <Route path="/user/:id" component={User}/>  #这里就是嵌套了两层的。
-        <IndexRoute component={Index}/>
-    </Route>
-</Router>
-```
-这种情况下，就特殊点，先看下文件夹大概样子
-```
-- users/
-    index.jsx
-    action.js //不是必须的 
-    reducer.js //不是必须的 
-    - children //必须要有
-        + index //newpage的indexRute,访问地址`/users`
-        + user //访问地址`/users/user/5`
-```
-其中users是二级父组件，user是二级页面子组件。
-### 页面后续改进
-后面可能会改成支持自定义参数，不过目前这个确实也够用了，就是有点限制。
 ## 基本使用
 先看下基本的页面index.jsx代码结构
 ```js
@@ -263,42 +238,49 @@ module.exports = routes;
 ```
 如果不了解，请先了解[react-router](https://github.com/reactjs/react-router)
 ### 定义公共actionCreator
-R2框架公共actionCreator定义于`R2/src/page/commonAction`,建议公共的actionCreator就定义在这里（当然你想定义在其他地方也可以）。commonAction代码如下
+R2框架公共actionCreator定义于`R2/src/page/action`,建议公共的actionCreator就定义在这里（当然你想定义在其他地方也可以）。commonAction代码如下
 
 ```js
-//框架自带公共actionCreator,用不到可以去掉
-import * as r2CommonActionCreator from "r2/actionCreator"
-//自定义公共actionCreator可以在这里定义
-module.exports = Object.assign({},r2CommonActionCreator,{
-    //这里定义
-});
+import * as r2ActionCreator from "r2/actionCreator"
+
+let requestPosts = r2ActionCreator.requestPosts; 
+let receivePosts = r2ActionCreator.receivePosts; 
+export const REQUESTLOGOUT = "REQUESTLOGOUT"
+export const RECIEVELOGOUT = "RECIEVELOGOUT"
+
+export function logout(successCallback,callbackAllStatus) {
+    var url = r2Common.REQUESTURL + "/sop/v1/operators/logout";
+    return r2fetch({
+        method: 'POST',
+        params:{},
+        callbackAllStatus,
+        successMessage: true,
+    }).dispatchFetchOne(url,requestPosts(REQUESTLOGOUT,"logout"),receivePosts(RECIEVELOGOUT,"logout"),successCallback)
+}
 ```
-### 定义公共reducer和绑定公共reducer
-R2框架公共reducer定义于`R2/src/page/commonReducer`,建议公共的reducer就定义在这里（当然你想定义在其他地方也可以）。commonReducer代码如下
+### 定义公共reducer
+R2框架公共reducer定义于`R2/src/page/reducer`,建议公共的reducer就定义在这里（当然你想定义在其他地方也可以）,然后运行`npm run ac`进行reducer绑定。代码如下
+
 ```js
-//框架自带公共reducer,用不到可以去掉
-import * as r2CommonReducer from 'r2/reducer' 
-//自定义公共reducer可以在这里定义
-module.exports = Object.assign({},r2CommonReducer,{
-    //这里定义
-}) 
-```
-绑定reducer
-进入文件`R2/src/reducers.js`
-```js
-import { combineReducers } from 'redux-immutable'//使用immutable情况
-import reducerSetting from ".fr/.temp/reducers"
-const reducer = combineReducers(Object.assign({},reducerSetting,{
-	//自定义reducer,非智能生成可以这里设置
-}))
-export default reducer
+import * as actionCreator from './action' 
+
+export function logout(state = {}, action) {
+    switch (action.type) {
+        
+        case actionCreator.REQUESTLOGOUT: 
+        case actionCreator.RECIEVELOGOUT:   
+            return Object.assign({}, state,action);
+        
+        default:
+            return state;
+    }
+}
 ```
 ### 全局变量定义
 目前R2框架的全局变量如下，详细情况API。
 
 - r2fn,公共常用方法
 - r2ActionCreator,公共actionCreator
-- r2Reducer,公共reducer
 - r2fetch,R2封装的fetch方法
 - r2Common,公共才设置或其他公共方法或公共变量
 
@@ -356,6 +338,12 @@ class View extends Component {
 module.exports = View; 
 ```
 定义在dataAdapter和events中的方法可以被组件`this`直接访问，R2框架内部做了处理。事件绑定也建议使用thunk模式。
+## 可能会遇到的坑
+### 使用淘宝镜像问题
+使用cnpm install有些包会出问题（mac上），把报错包卸掉，使用npm安装就没问题。
+以下是cnpm安装后报错报
+
+- extract-text-webpack-plugin 
 ## FAQ
 正在整理。 
 ## 感言
