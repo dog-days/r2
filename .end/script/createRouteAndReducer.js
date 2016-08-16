@@ -21,8 +21,7 @@ if(process.env.NODE_ENV == "production"){
 	];
 }else if(commander.viewModel){
 	viewPath = [
-		"src/page/view", 
-		"src/page/.viewModel", 
+		"src/page", 
 	];
 }
 
