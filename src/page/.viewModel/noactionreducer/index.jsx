@@ -35,7 +35,7 @@ class View extends Component {
 		super.render();
 		let { targetProps } = this.props;
 		return (
-			<div className="noactionrecucer-view">
+			<div className="noactionreducer-view">
 			</div>
 		)	
     }
@@ -43,7 +43,7 @@ class View extends Component {
 
 var ReduxView = connect((state)=>{
 	return {
-	    targetProps : state.get("noactionrecucer"),
+	    targetProps : state.get("noactionreducer"),
 	};
 })(View)
 ReduxView.defaultProps = Object.assign({},Component.defaultProps,{

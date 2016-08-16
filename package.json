@@ -68,9 +68,9 @@
     "i": "npm install && cd ./.end && npm install && cd ../",
     "ci": "cnpm install && cd ./.end && cnpm install && cd ../",
     "ac": "node --harmony ./.end/script/createRouteAndReducer.js",
-    "acm": "node --harmony ./.end/script/createRouteAndReducer.js -m",
     "startboth": "npm start & npm run startend",
     "startwboth": "npm run startw & npm run startend",
+    "cv": "node --harmony ./.end/script/CreateView.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "sam",
