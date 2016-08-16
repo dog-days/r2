@@ -20,7 +20,8 @@ var config = Object.assign({}, webpack_config, {
             	loader: 'babel',
 				exclude: /node_modules/,//设置node_modules目录为根目录下的node_modules,根目录以package为参考
             },
-            { test: /\.css$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader","sass-loader") },
+            { test: /\.css$/, loader: ExtractTextPlugin.extract("style", "css") },
+            { test: /\.scss$/, loader: ExtractTextPlugin.extract("style", "css!sass") },
         ]
     },
     plugins: [

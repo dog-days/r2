@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux-immutable'
-import reducerSetting from ".fr/.temp/reducers"
+import reducerSetting from ".end/temp/reducers"
 const reducer = combineReducers(Object.assign({},reducerSetting,{
 	//自定义reducer,非智能生成可以这里设置
 }))

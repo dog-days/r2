@@ -20,11 +20,6 @@ class App extends React.Component {
 			let LayoutView;
 			//console.debug(layout)
 			switch(layout){
-				case "frontend/view/layout/main":
-					if(module.hot){
-						LayoutView = require('frontend/view/layout/main');
-					}
-				break;
 				default:
 					LayoutView = require('page/layout');
 			}

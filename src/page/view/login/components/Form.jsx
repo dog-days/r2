@@ -66,7 +66,7 @@ class LoginForm extends Component {
 						欢迎使用R2框架	
 					</span>
 				</div>
-				<Antd.Form className="login-register-form-inner" horizontal onSubmit={this.handleSubmit()} form={this.props.form}>
+				<Antd.Form className="login-register-form-inner" horizontal onSubmit={this.handleSubmit()}>
 					
 					<Antd.Form.Item  hasFeedback {...formItemLayout}>
 						<Antd.Input { ...emailProps } name="email" placeholder="账号（邮箱）" />
