@@ -33,7 +33,7 @@ class Fetch extends BasicFetch {
 				//Antd.Modal.info(msg);
 				Antd.message.warn(json.message)
 				setTimeout(function(){
-					dispatch(push('/login'))
+					dispatch(push(`${r2Common.prefixUrl}/login`))	
 				},1000)
 			}else{
 				if(!callbackOtherStatus){

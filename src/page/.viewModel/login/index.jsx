@@ -5,6 +5,7 @@ import * as Antd from 'antd'
 import * as actionCreator from './action'
 import LoginForm from './components/Form'
 require('antd/dist/antd.css')
+require('css/base.scss')
 require('css/main.scss')
 require('css/login.scss')
 
@@ -35,8 +36,8 @@ class Login extends Component {
 		var _this = this;
 		let { targetProps } = this.props;
 		return (
-			<div className="login-register-con">
-				<div className="login-register-form-con">
+			<div className="login-con">
+				<div className="login-form-con">
 					<LoginForm />
 				</div>
 			</div>

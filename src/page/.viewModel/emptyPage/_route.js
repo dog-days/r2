@@ -1,4 +1,4 @@
-var view = "emptyPage";
+var view = `${r2Common.prefixUrl}/emptyPage`;
 module.exports = {
     path: `${view}`,
     getComponent(location, cb) {

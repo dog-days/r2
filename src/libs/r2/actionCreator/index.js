@@ -1,32 +1,9 @@
 //input输入
 export const R2FORMINPUT = 'R2FORMINPUT'
 export const R2CLEARFORMDATA = 'R2CLEARFORMDATA'
-export const R2STORAGE = 'R2STORAGE'
-export const R2STORAGE2 = 'R2STORAGE2'
 
 let commonAction = { } 
 
-/**
- * 表单输入actionCreator 
- * @param {String} id redux action类型,唯一 
- * @param {*} value 任何类型值 
- * @return {Object} redux action 结果 
- */
-export function store(id,value){
-	var obj = {
-		type : R2STORAGE,
-	}
-	obj[id] = value;
-	return obj; 
-}
-
-export function store2(id,value){
-	var obj = {
-		type : R2STORAGE2,
-	}
-	obj[id] = value;
-	return obj; 
-}
 /**
  * 表单输入actionCreator 
  * @param {String} inputid redux action类型,唯一 
@@ -60,9 +37,11 @@ export function clearFormData(fields){
 /**
  * 请求数据actionCreator 
  * @param {String} _const redux action类型,唯一 
- * @return {Function} () 返回函数参数为空
+ * @param {String} type 定义类型,在相同reducer中唯一 
+ * @param {Bulean} createData 是否情况receivePosts result数据 
+ * @return {Function} (json) 返回函数参数为json对象
  */
-export function requestPosts(_const,type) {
+export function requestPosts(_const,type,clearData=false) {
 	return function(){
 		var obj = Object.assign({},commonAction,{
 			type: _const,
@@ -71,9 +50,13 @@ export function requestPosts(_const,type) {
 			fetched : false,
 			isFetching : true,
 		};
+		if(clearData){
+			obj[type].result = null; 
+		}
 		return obj;
 	}
 }
+
 
 /**
  * 成功获取数据actionCreator 
@@ -95,4 +78,5 @@ export function receivePosts(_const,type) {
 		return obj;
 	}
 }
+
 
