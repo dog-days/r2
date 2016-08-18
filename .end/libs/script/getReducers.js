@@ -52,7 +52,7 @@ class Script {
 	 *@return {array} 匹配的reducer方法名
 	 */
 	getReducersFunc(content){
-		var con = content.match(/export(.*?)function(.*?)\(/g);
+		var con = content.match(/[^//][^//][^//]export(.*?)function(.*?)\(/g);
 		var reducers = [];
 		if(con){
 			con.forEach(function(data){
@@ -61,6 +61,7 @@ class Script {
 				reducers.push(re);	
 			})
 		}
+		//console.log(reducers)
 		return reducers;
 	}
 }

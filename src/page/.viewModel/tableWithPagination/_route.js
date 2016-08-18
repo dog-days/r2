@@ -1,4 +1,4 @@
-var view = "tableWithPagination";
+var view = `${r2Common.prefixUrl}/tableWithPagination`;
 module.exports = {
     path: `${view}`,
     getComponent(location, cb) {
