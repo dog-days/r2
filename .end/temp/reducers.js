@@ -14,7 +14,10 @@ import { loginForm } from 'src/page/view/login/reducer.js'
 const initialState = Immutable.fromJS({
     locationBeforeTransitions: null
 });
-var immutableReducer = function(state = initialState, action){
+var immutableReducer = function(state, action){
+    if(!state){
+    	state = initialState
+    }
     if (action.type === LOCATION_CHANGE) {
         return state.merge({
             locationBeforeTransitions: action.payload
@@ -23,7 +26,7 @@ var immutableReducer = function(state = initialState, action){
     return state;
 }
 
-let reducer = {
+var reducer = {
 
 	about,
 
@@ -35,4 +38,5 @@ let reducer = {
 }
 
 export default reducer
+
 

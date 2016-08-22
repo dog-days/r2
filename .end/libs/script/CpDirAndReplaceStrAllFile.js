@@ -37,6 +37,9 @@ class Script {
 				})
 				var patt = new RegExp(this.config.type,"g");
 				contents = contents.replace(patt,this.config.replaceStr)
+				if(this.config.layout != "false"){
+					contents = contents.replace(/\/\/layout: "main",\/\//,"layout: '"+this.config.layout+"',")
+				}
 				fs.writeFileSync(t_path,contents)
 			})
 			console.log("create view success",this.config.dest)
