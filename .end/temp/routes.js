@@ -1,7 +1,7 @@
 import App from 'page/App'
 var childRoutes = [
 	
-	require('src/page/view/about/_route.js'),
+	require('src/page/view/layout/main/_route.js'),
 	
 	require('src/page/view/login/_route.js'),
 	
@@ -17,8 +17,6 @@ var childRoutes = [
 ];
 module.exports = {
 	path : "/",
-	
-	indexRoute: require('src/page/view/index/_route.js'),
 	
     component: App,
     childRoutes: childRoutes 

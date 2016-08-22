@@ -55,6 +55,5 @@ function mapStateToProps(state){
 Login = connect(mapStateToProps)(Login)
 Login.defaultProps = {
 	title: "登陆",
-	layout: false,	
 };
 module.exports = Login; 

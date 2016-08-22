@@ -36,7 +36,7 @@ class View extends Component {
 		let { targetProps } = this.props;
 		return (
 			<div className="about">
-				<Antd.Alert message="这是一个关于页面！有action.js和reducer.js。" type="info" showIcon closable/>
+				<Antd.Alert message="这是一个关于页面！" type="info" showIcon />
 			</div>
 		)	
     }
