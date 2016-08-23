@@ -1,18 +1,42 @@
 import React from 'react'
-import LayoutComponent from 'r2/module/LayoutAntdComponent'
+import Component from 'r2/module/ModuleComponent'
 import { connect } from 'react-redux'
-import { Link } from 'react-router'
+import Antd from 'antd'
 import { Menu } from 'antd'
+import { Link } from 'react-router'
 
 require('antd/dist/antd.css')
 require('css/base.scss')
 require('css/main.scss')
 
-class Layout extends LayoutComponent{
+class View extends Component {
 	constructor(props){
 		super(props); 
 	}
-	
+
+	componentDidMount(){
+		var _this = this;
+	}
+
+	componentWillUnmount(){
+	}
+	/**
+	 *	数据处理与适配
+	 */
+	dataAdapter(){
+		var _this = this;
+		return {
+		}
+	}
+	/**
+	 *	事件处理
+	 */
+	events(){
+		var _this = this;
+		return{
+		}
+	}
+
     render() {
 		super.render();
 		return (
@@ -43,19 +67,20 @@ class Layout extends LayoutComponent{
 					{ this.breadcrumb || "" }
 				</div>
 				<div className="r2-contents">
-					{ this.props.contents || "" }
+					{ this.props.children || "" }
 				</div>
 			</div>
-		)
+		)	
     }
 }
-
-function mapStateToProps(state){
+var ReduxView = connect((state)=>{
 	return {
 	};
-}
-Layout = connect(mapStateToProps)(Layout)
-Layout.defaultProps = Object.assign({},LayoutComponent.defaultProps,{ 
-})
-module.exports = Layout; 
-
+})(View)
+ReduxView.defaultProps = Object.assign({},Component.defaultProps,{
+	homeLink: {
+		label:<Antd.Icon type="home"/>,
+		link:'/',
+	},
+});
+module.exports = ReduxView; 

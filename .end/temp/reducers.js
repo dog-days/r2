@@ -11,7 +11,7 @@ import { login } from 'src/page/view/login/reducer.js'
 import { loginForm } from 'src/page/view/login/reducer.js'
 
 
-const initialState = Immutable.fromJS({
+var initialState = Immutable.fromJS({
     locationBeforeTransitions: null
 });
 var immutableReducer = function(state, action){

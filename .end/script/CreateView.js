@@ -12,7 +12,7 @@ commander
   .option('-p, --tableWithPagination <view-name>', '创建tableWithPagination视图模板')
   .parse(process.argv);
 if(!commander.rawArgs[2]) {
-	console.error("error: argument missing")
+	console.error("error: argument missing,please check for the command!")
 	return;
 }
 //console.log(commander.layout)
@@ -55,7 +55,10 @@ if(commander.tableWithPagination){
 	}
 }
 var CpDirAndReplaceStrAllFile = require("../libs/script/CpDirAndReplaceStrAllFile")
-
+if(!src || !dest || !replaceStr || !type){
+	console.error("error: argument missing,please check for the command!")
+	return;
+}
 new CpDirAndReplaceStrAllFile({
 	src, 
 	dest, 
