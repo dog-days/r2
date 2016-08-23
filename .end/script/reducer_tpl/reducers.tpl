@@ -7,7 +7,7 @@ import { routerReducer } from 'react-router-redux'
 import { ${reducer} } from '${path}'
 <!--reducer_import_end-->
 
-const initialState = Immutable.fromJS({
+var initialState = Immutable.fromJS({
     locationBeforeTransitions: null
 });
 var immutableReducer = function(state, action){

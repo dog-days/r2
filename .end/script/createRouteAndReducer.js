@@ -29,12 +29,12 @@ new createRoute({
 	path: viewPath,
 	tplPath: ".end/script/route_tpl",
 	fileName:"_route.js",
-	savePath:".end/temp/routes.js",
+	savePath:".temp/routes.js",
 });
 
 new createReducer({
 	path: viewPath,
 	tplPath: ".end/script/reducer_tpl",
 	fileName:"reducer.js",
-	savePath:".end/temp/reducers.js",
+	savePath:".temp/reducers.js",
 });

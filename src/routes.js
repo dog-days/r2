@@ -1,4 +1,4 @@
-import routes from '.end/temp/routes'
+import routes from '../.temp/routes'
 
 /**
  *	 var routes = {
