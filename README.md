@@ -1,6 +1,6 @@
 # R2框架
 
-[R2框架](https://github.com/dog-days/r2)(Redux React Framework)主要是基于React、Redux而构建的(其他配合使用的还有当然也使用了react-router,react-router-redux,react-redux,immutable.js)。使用webpack模块加载工具，采用ES62015语法。所有如果要使用本框架，这些知识多多少少都要回点的。同时也使用了[Ant Design React](http://ant.design/#/docs/react/introduce)组件,页面生成功能采用的的组件就是Ant Design,目前只支持这种，后面页面生成也会支持多种UI组件。
+[R2框架](https://github.com/dog-days/r2)(Redux React Framework)主要是基于React、Redux而构建的(其他配合使用的还有当然也使用了react-router,react-router-redux,react-redux,immutable.js)。使用webpack模块加载工具，采用ES62015语法。所有如果要使用本框架，这些知识多多少少都要会点的。同时也使用了[Ant Design React](http://ant.design/#/docs/react/introduce)组件,生成的页面使用的UI是Ant Design,目前只支持这种，后面页面生成也会支持多种UI组件。
 R2框架旨在快速搭建页面，减少重复工作，减少重复代码，提高开发效率。
 
 ## R2框架相关阅读
