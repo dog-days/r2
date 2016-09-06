@@ -1,12 +1,13 @@
 {
   "name": "r2",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "r2",
   "dependencies": {
     "antd": "^1.6.5",
     "history": "^1.17.0",
     "immutable": "^3.8.1",
-    "isomorphic-fetch": "^2.2.0",
+    "isomorphic-fetch": "^2.2.1",
+    "js-cookie": "^2.1.2",
     "react": "^15.2.1",
     "react-d3-components": "^0.6.2",
     "react-dom": "^15.3.0",

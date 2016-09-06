@@ -7,10 +7,13 @@ import { routerReducer } from 'react-router-redux'
 import { ${reducer} } from '${path}'
 <!--reducer_import_end-->
 
-const initialState = Immutable.fromJS({
+var initialState = Immutable.fromJS({
     locationBeforeTransitions: null
 });
-var immutableReducer = function(state = initialState, action){
+var immutableReducer = function(state, action){
+    if(!state){
+    	state = initialState
+    }
     if (action.type === LOCATION_CHANGE) {
         return state.merge({
             locationBeforeTransitions: action.payload
@@ -19,7 +22,7 @@ var immutableReducer = function(state = initialState, action){
     return state;
 }
 
-let reducer = {
+var reducer = {
 <!--reducer_reducer_begin-->
 	${reducer},
 <!--reducer_reducer_end-->
@@ -27,4 +30,5 @@ let reducer = {
 }
 
 export default reducer
+
 

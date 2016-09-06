@@ -33,7 +33,6 @@ class BasicComponent extends React.Component {
 	constructor(props){
 		super(props); 
 		this.state = { }
-		this.getParamsOfId(props);
 		this.bindFunctions();
 		if(props && props.title){
 			document.title = props.title + props.titleSffix;
@@ -62,16 +61,6 @@ class BasicComponent extends React.Component {
 			}
 		}
 		return false;
-	}
-	/**
-	* 配合智能生成路由使用，生成的路由如果有两层默认参数是id,如果想传多参数，使用"_"来分割。
-	* 如/test/start/1_2_3,之后可以直接使用this.r2Params访问
-	*/
-	getParamsOfId(props){
-		var params = props && props.params;
-		if(params && params.id){
-			this.r2Params = params.id.split("_");
-		}
 	}
 
 	bindFunctions(){

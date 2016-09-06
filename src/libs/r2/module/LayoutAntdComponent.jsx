@@ -8,6 +8,7 @@ var Breadcrumb = Antd.Breadcrumb;
  *	layout页面最好继承这个类，做了面包屑处理
  *@prop {Object} homlink 面包写主页设置 
  */
+
 class LayoutAntdComponent extends BasicComponent {
 	
 	constructor(props){

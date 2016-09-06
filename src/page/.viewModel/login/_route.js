@@ -8,6 +8,7 @@ var view = function(){
 	return re;
 } 
 module.exports = {
+	layout: "main",
 	path: view(), 
     getComponent(location, cb) {
         require.ensure([], (require) => {

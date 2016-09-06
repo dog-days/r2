@@ -30,7 +30,7 @@ class Script {
 				//判断指定文件是否存在
 				var f_path = path.resolve(v,this.config.fileName)
 				if(fs.existsSync(f_path)){
-					this.filesPath.push(f_path);
+					this.filesPath.push(f_path.replace(/\\/g,"/"));
 				}
 			})
 			// console.log(this.filesPath)

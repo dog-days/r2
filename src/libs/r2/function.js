@@ -155,6 +155,34 @@ var fn = {
 		}
 		return value;
 	},
+
+	transformBandWidth(t_value,unit){
+		var value = 0;
+		if(unit === 'Gb'){
+			value = Math.round(t_value / 1000 / 1000 / 1000 * 100 ) / 100  + '';	
+		}else if(unit === 'Mb'){
+			value = Math.round(t_value / 1000 / 1000 * 100) / 100  + '';	
+		}else if(unit === 'Kb'){
+			value = Math.round(t_value / 1000 * 100) / 100 + '';	
+		}else {
+			value = t_value;
+		}
+		return value;
+	},
+
+	getKbMbGbUnit(t_value){
+		var value = '';
+		if(t_value > 1000 * 1000 * 1000){
+			value = 'Gb';	
+		}else if(t_value > 1000 * 1000){
+			value = 'Mb';	
+		}else if(t_value > 1000){
+			value = 'Kb';	
+		}else if(t_value != 0){
+			value =  '字节';	
+		}
+		return value;
+	},
 	/**
 	 *	流量或存储 字节单位转换为KB,MB,GB单位
 	 *@param {int} t_value 转换值
@@ -169,6 +197,34 @@ var fn = {
 			value = Math.round(t_value / 1024 * 100) / 100 + 'KB';	
 		}else if(t_value != 0){
 			value = t_value + 'B';	
+		}
+		return value;
+	},
+
+	transformByUnit(t_value,unit){
+		let value = 0;
+		if(unit === "GB"){
+			value = Math.round(t_value / 1024 / 1024 / 1024 * 100 ) / 100  + '';	
+		}else if(unit === "MB"){
+			value = Math.round(t_value / 1024 / 1024 * 100) / 100  + '';	
+		}else if(unit === "KB"){
+			value = Math.round(t_value / 1024 * 100) / 100 + '';	
+		}else if(unit === "字节"){
+			value = t_value ;	
+		}
+		return value;
+	},
+
+	getTransformToKbMBGBUnit(t_value){
+		let value = 0;
+		if(t_value > 1024 * 1024 * 1024){
+			value = 'GB';	
+		}else if(t_value > 1024 * 1024){
+			value = 'MB';	
+		}else if(t_value > 1024){
+			value = 'KB';	
+		}else if(t_value != 0){
+			value = '字节';	
 		}
 		return value;
 	},
@@ -196,7 +252,7 @@ var fn = {
 	},
 	/**
 	 *	生成随机数
-	 * @param [int] n 需要生成随机数的位数
+	 * @param {int} n 需要生成随机数的位数
 	 */
 	generateMixed(n){
 		var res = "",
@@ -209,7 +265,7 @@ var fn = {
 	},
 	/**
 	 *	获取地址域名
-	 * @param [int] n url 为地址
+	 * @param {int} url 为地址
 	 */
 	getHost (url) { 
 		var host = "null";
@@ -309,20 +365,25 @@ var fn = {
 	* 根据传进来的Imutable数据,判断是否更新React组件
 	* @param {Object || Imutable Object} state redux reducer 参数state 
 	* @param {Object} action redux reducer参数 action 
+	* @param {String} type action类型两种request和receive 
 	* @param {Function} callbackBefore 本函数其他处理前执行的回调函数
 	* @return {Imutable Object} merge后的Imutable对象 
 	*/
-	imutableReducer(state,action,callbackBefore){
+	imutableReducer(state,action,type,callbackBefore){
 		callbackBefore && callbackBefore();
-		var data;
+		var data = {};
 		if(state.toJS){
-			data = state.mergeDeep(action)
+			if(type == "request"){
+				return state.mergeDeep(Immutable.fromJS(action))
+			}
+			if(type == "receive"){
+				return state.merge(Immutable.fromJS(action))
+			}
 		}else{
 			data = Object.assign({},state,action);
+			var i_state = Immutable.fromJS(data)
+			return i_state; 	
 		}
-		var i_state = Immutable.fromJS(data)
-		return i_state; 	
 	}
 }
 module.exports = fn;
-

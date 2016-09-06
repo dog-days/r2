@@ -5,7 +5,7 @@ var path = require("path")
 var ReadDirTpl = require("../libs/script/ReadDirTpl")
 var FindSpecificFileByDir = require("../libs/script/FindSpecificFileByDir")
 var getRoutes = require("../libs/script/getRoutes")
-
+var r2Common = "";
 class Script {
 	constructor(config){
 		this.config = config;
@@ -51,18 +51,42 @@ class Script {
 			name = "routes" ;
 		var tpl = this.tpls[name],	
 			content = tpl.contents;	
-		var require = "",
+		var im = "",
 			index = "";
+		//指定layout是否是第一次
+		var state = {};
+		//处理一级route，判别方式为每个_route.js中是否有layout变量。
 		this.routes.forEach(v=>{
-			if(v.name != "index"){
-				require += tpl.tagsInfo.tagContents['require']
-						.replace(/\$\{path\}/g,v.path)
+			var layout = require(v.absolutePath).layout;
+			if(!layout){
+				if(v.name != "index"){
+					im += tpl.tagsInfo.tagContents['require']
+							.replace(/\$\{path\}/g,v.path)
+				}else{
+					index += tpl.tagsInfo.tagContents['index']
+							.replace(/\$\{path\}/g,v.path)
+				}
 			}else{
-				index += tpl.tagsInfo.tagContents['index']
-						.replace(/\$\{path\}/g,v.path)
+				var layout_path = path.resolve('src/page/view/layout',layout) 
+				var child_routesPath = path.resolve(layout_path,'.child_routes.js');
+				if(fs.existsSync(child_routesPath)){
+					if(!state[layout]){
+						//首次初始化，文件内容
+						fs.writeFileSync(child_routesPath,"module.exports = [\n\r	//routes//\n\r]")
+						state[layout] = true;
+					}
+					var child_routes = fs.readFileSync(child_routesPath,{
+						encoding : 'utf-8'
+					})
+					child_routes = child_routes.replace(/\/\/routes\/\//g,'require("'+v.path+'"), \n\r	//routes//')
+					fs.writeFileSync(child_routesPath,child_routes)
+				}else{
+					console.error(v.absolutePath + "：不存在layout---"+layout)
+				}
+				
 			}
 		})
-		content = content.replace(tpl.tagsInfo.tagRegex['require'],require)
+		content = content.replace(tpl.tagsInfo.tagRegex['require'],im)
 		content = content.replace(tpl.tagsInfo.tagRegex['index'],index)
 		// console.log(content)
 		fs.writeFileSync(path.resolve(this.config.savePath),content)
