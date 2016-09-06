@@ -14,7 +14,6 @@ var commonAction = r2ActionCreator;
 class ModuleComponent extends BasicComponent {
 	constructor(props){
 		super(props); 
-		this.createBreadcrumb()
 	}
 	
 	createBreadcrumb(){
@@ -121,6 +120,10 @@ class ModuleComponent extends BasicComponent {
 		}
 	}
 
+	render(){
+		super.render()
+		this.createBreadcrumb()
+	}
 }
 
 ModuleComponent.defaultProps = {
