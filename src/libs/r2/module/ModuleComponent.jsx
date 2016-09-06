@@ -14,6 +14,10 @@ var commonAction = r2ActionCreator;
 class ModuleComponent extends BasicComponent {
 	constructor(props){
 		super(props); 
+<<<<<<< HEAD
+=======
+		this.createBreadcrumb()
+>>>>>>> 66adfa351d9c1956dd936c0d4ca1c1775ca4b83a
 	}
 	
 	createBreadcrumb(){
