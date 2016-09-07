@@ -17,7 +17,7 @@ var childRoutes = [
 ];
 module.exports = {
 	path : "/",
-	
+	indexRoute: require('src/page/view/layout/main/_route.js'),
     component: App,
     childRoutes: childRoutes 
 }

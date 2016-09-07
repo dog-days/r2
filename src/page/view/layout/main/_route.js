@@ -21,5 +21,6 @@ module.exports = {
             cb(null, require("./index"))
         },"main")
     },
+   	indexRoute: require("src/page/view/index/_route.js"),
     childRoutes: childRoutes(),
 }
