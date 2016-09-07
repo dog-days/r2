@@ -43,23 +43,18 @@ class View extends Component {
 			<div className="r2-layout">
 				<Menu onClick={this.handleClick} mode="horizontal" theme="dark">
 					<Menu.Item key="demo">
-						<Link to="/">
+						<Link to={`${ r2Common.prefixUrl }`}>
 							R2框架
 						</Link>
 					</Menu.Item>
 					<Menu.Item key="home">
-						<Link to="/">
+						<Link to={`${ r2Common.prefixUrl }`}>
 							主页
 						</Link>
 					</Menu.Item>
 					<Menu.Item key="about">
-						<Link to="/about">
+						<Link to={`${ r2Common.prefixUrl }/about`}>
 							关于	
-						</Link>
-					</Menu.Item>
-					<Menu.Item key="login">
-						<Link to="/login">
-							登陆
 						</Link>
 					</Menu.Item>
 				</Menu>
