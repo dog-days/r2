@@ -18,7 +18,7 @@ var config = Object.assign({}, webpack_config, {
 			{ 
             	test: /\.js[x]?$/, 
             	loader: 'babel',
-				exclude: /node_modules/,//设置node_modules目录为根目录下的node_modules,根目录以package为参考
+				exclude: /node_modules/,//不解析node_modules的es6语法 
             },
             { test: /\.css$/, loader: ExtractTextPlugin.extract("style", "css") },
             { test: /\.scss$/, loader: ExtractTextPlugin.extract("style", "css!sass") },
@@ -37,7 +37,9 @@ var config = Object.assign({}, webpack_config, {
                 warnings: false
             }
         }),
-        new ExtractTextPlugin('css/styles.css'),
+        new ExtractTextPlugin('css/styles.css', {
+            allChunks: true
+        }),
     ]
 });
 //console.log(config.entry);
