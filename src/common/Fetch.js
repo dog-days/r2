@@ -3,7 +3,7 @@ import deprecate from 'core-decorators/lib/deprecate';
 import fetch from 'isomorphic-fetch'
 import { push } from 'react-router-redux'
 import * as Antd from 'antd'
-import BasicFetch from './BasicFetch'
+import BasicFetch from 'r2/fetch/BasicFetch'
 /**
  * 针对当前项目fetch封装 
  */
@@ -102,80 +102,6 @@ class Fetch extends BasicFetch {
 		}
 		return super.dispatchFetchMore(urls,request,receive,successCallback200,callbackOtherStatus,errorCallback);
 	}
-	/**
-	 * [fetch 获取接口数据]
-	 * @param  {[Function]} dispatch        [redux dispatch]
-	 * @param  {[Function]} request         [redux action 设置开始请求数据状态]
-	 * @param  {[Function]} receive         [redux action 设置请求已完成数据状态]
-	 * @param  {[Function]} nologin         [未登录或登录失效处理]
-	 * @param  {[Function]} successCallback [所有请求成功回调函数]
-	 * @param  {[Function]} errorCallback   [请求失败回调函数]
-	 */
-	@deprecate
-	fetch(dispatch,request,receive,nologin,successCallback,errorCallback) {
-		var _this = this;
-		dispatch(request())
-		var urls = [],status = [];
-		//console.debug(this.fetchOption)
-		this.option.urls.forEach(function(v,k){
-			let i = k;
-			var re = fetch(v,_this.fetchOption).then(response => {
-					status[i] = response.status;
-					return response.json();
-				})
-			urls.push(re);
-		})
-		Promise.all(urls)
-			.then(function(jsonArray){
-				jsonArray.forEach(function(v,k){
-					v.status = status[k];
-				})
-				let msg = { };
-				if(!_this.option.successMessage){
-					msg = {
-						title: '提示',
-						content: jsonArray[0].message,
-					}
-				}
-				if(jsonArray[0].status == 200){
-					dispatch(receive(jsonArray));
-					if(_this.option.showMessage){
-						Antd.Modal.success(msg);
-					}
-					successCallback && successCallback(jsonArray);
-				}else if(jsonArray[0].status == 401){
-					if(nologin){
-						nologin();
-					}else{
-						Antd.Modal.info(msg);
-						setTimeout(function(){
-							dispatch(push('/login'))
-						},1000)
-					}
-				}else{
-					dispatch(receive([null]));
-					if(errorCallback){
-						errorCallback(msg);
-					}else{
-						Antd.Modal.error(msg);
-					}
-				}
-			}).catch(function(e){
-				console.error(e)
-				dispatch(receive([null]));
-				let msg = { };
-				if(!_this.option.errorMessage){
-					msg = {
-						title: '错误提示',
-						content: '发生了未知错误！',
-					}
-				}
-				Antd.Modal.error(msg);
-			});
-	}
-
-
-
 }
 
 module.exports = Fetch; 

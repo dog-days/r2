@@ -1,9 +1,9 @@
 //项目common,不同项目会不同
 window.r2Common = require('common/common');
 //公共方法
-window.r2fn = require('./function')
+window.r2fn = require('src/common/function')
 //公共fetch
-var Fetch = require('r2/fetch/Fetch');
+var Fetch = require('common/Fetch');
 window.r2fetch = function(option){
 	return new Fetch(option)
 };
