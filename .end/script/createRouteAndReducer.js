@@ -10,19 +10,22 @@ commander
   .version('0.0.1')
   .option('-m, --viewModel', 'render src/page/.viewModel')
   .parse(process.argv);
-var viewPath;
+var viewPath,layoutPath;
 if(process.env.NODE_ENV == "production"){
 	viewPath = [
 		"src/page/view", 
 	];
+    layoutPath = "src/page/view/layout";
 }else if(!commander.viewModel){
 	viewPath = [
 		"src/page/view", 
 	];
+    layoutPath = "src/page/view/layout";
 }else if(commander.viewModel){
 	viewPath = [
 		"src/page/.viewModel", 
 	];
+    layoutPath = "src/page/.viewModel/layout";
 }
 
 new createRoute({
@@ -30,6 +33,7 @@ new createRoute({
 	tplPath: ".end/script/route_tpl",
 	fileName:"_route.js",
 	savePath:".temp/routes.js",
+	layoutPath,
 });
 
 new createReducer({
