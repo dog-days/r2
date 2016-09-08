@@ -36,7 +36,7 @@ class View extends Component {
 		let { targetProps } = this.props;
 		return (
 			<div className="about">
-				<Antd.Alert message="这是一个关于页面！" type="info" showIcon />
+				<Antd.Alert message={r2fn.t("这是一个关于页面！")} type="info" showIcon />
 			</div>
 		)	
     }
@@ -48,10 +48,10 @@ var ReduxView = connect((state)=>{
 	};
 })(View)
 ReduxView.defaultProps = Object.assign({},Component.defaultProps,{
-	title: "关于",
+	title: r2fn.t("关于"),
 	breadcrumb:[
 		{
-			label:'关于',
+			label: r2fn.t("关于"),
 		},
 	],
 });

@@ -44,17 +44,17 @@ class View extends Component {
 				<Menu onClick={this.handleClick} mode="horizontal" theme="dark">
 					<Menu.Item key="demo">
 						<Link to={`${ r2Common.prefixUrl }`}>
-							R2框架
+						    { r2fn.t("R2框架") }
 						</Link>
 					</Menu.Item>
 					<Menu.Item key="home">
 						<Link to={`${ r2Common.prefixUrl }`}>
-							主页
+						    { r2fn.t("主页") }
 						</Link>
 					</Menu.Item>
 					<Menu.Item key="about">
 						<Link to={`${ r2Common.prefixUrl }/about`}>
-							关于	
+						    { r2fn.t("关于") }
 						</Link>
 					</Menu.Item>
 				</Menu>

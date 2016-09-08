@@ -1,4 +1,3 @@
-import deprecate from 'core-decorators/lib/deprecate';
 import Immutable from 'immutable'
 import { is } from 'immutable'
 var fn = {
@@ -384,6 +383,24 @@ var fn = {
 			var i_state = Immutable.fromJS(data)
 			return i_state; 	
 		}
-	}
+	},
+    /*
+    * locale翻译替换函数，根据当前str和配置的语言选项替换。
+    * @param {string} str 需要替换的文字 
+    */
+    t(str){
+        var locale = require("src/common/locale"); 
+        var t = {}
+        for(let [k,v] of locale.entries()){
+            t[v] = k;
+        }
+        if(r2Common.language){
+            var o = r2Common.language[t[str]];
+            if(o){
+                return o;
+            }
+        }
+        return str;
+    }
 }
 module.exports = fn;
