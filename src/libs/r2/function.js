@@ -390,12 +390,12 @@ var fn = {
     */
     t(str){
         var locale = require("src/common/locale"); 
-        var t = {}
-        for(let [k,v] of locale.entries()){
-            t[v] = k;
-        }
+        var temp = {}
+        locale.forEach((v,k)=>{
+            temp[v] = k;
+        })
         if(r2Common.language){
-            var o = r2Common.language[t[str]];
+            var o = r2Common.language[temp[str]];
             if(o){
                 return o;
             }

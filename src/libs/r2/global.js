@@ -1,23 +1,3 @@
-//es6支持IE10
-Object.assign = Object.assign || require('object.assign/polyfill')(); // returns native method if compliant
-Object.keys = Object.keys.shim || Object.keys; 
-//兼容父类构造器不允许问题
-(function() {
-  var testObject = {};
-  if (!(Object.setPrototypeOf || testObject.__proto__)) {
-      var nativeGetPrototypeOf = Object.getPrototypeOf;
-
-      Object.getPrototypeOf = function(object) {
-          if (object.__proto__) {
-              return object.__proto__;
-          } else {
-              return nativeGetPrototypeOf.call(Object, object);
-          }
-      }
-  }
-})();
-
-
 //项目common,不同项目会不同
 window.r2Common = require('common/common');
 //公共方法
