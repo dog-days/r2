@@ -1,9 +1,10 @@
 {
   "name": "r2",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "r2",
   "dependencies": {
     "antd": "^1.6.5",
+    "es6-shim": "^0.35.1",
     "history": "^1.17.0",
     "immutable": "^3.8.1",
     "isomorphic-fetch": "^2.2.1",
