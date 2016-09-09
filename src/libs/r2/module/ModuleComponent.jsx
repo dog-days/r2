@@ -15,7 +15,7 @@ class ModuleComponent extends BasicComponent {
 	constructor(props){
 		super(props); 
 	}
-	
+
 	createBreadcrumb(){
 		if(this.props && this.props.children){
 			var breadcrumb = this.props.children.props.breadcrumb;

@@ -67,7 +67,7 @@ class Script {
 							.replace(/\$\{path\}/g,v.path)
 				}
 			}else{
-				var layout_path = path.resolve('src/page/view/layout',layout) 
+				var layout_path = path.resolve(this.config.layoutPath,layout) 
 				var child_routesPath = path.resolve(layout_path,'.child_routes.js');
 				if(fs.existsSync(child_routesPath)){
 					if(!state[layout]){

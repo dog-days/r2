@@ -3,11 +3,13 @@ import { render } from 'react-dom'
 import { Provider } from 'react-redux'
 import { Router,IndexRoute,browserHistory } from 'react-router'
 import { syncHistoryWithStore } from 'react-router-redux' 
+import Immutable from 'immutable'
+//IE10等polyfill
+import polyfill from 'src/common/polyfill'
 //公共方法||类载入，用window对象访问
 import global from 'r2/global'
 import configureStore from './store'
 import rootRoute from './routes'
-import Immutable from 'immutable'
 
 const initialState = Immutable.Map();
 const store = configureStore(initialState,browserHistory);

@@ -30,7 +30,7 @@ module.exports = {
 			{ 
             	test: /\.js[x]?$/, 
             	loader: 'babel',
-				exclude: /node_modules/,//解析node_modules的es6语法 
+				exclude: /node_modules/,//不解析解析node_modules的es6语法 
             },
             { test: /\.css$/, loader: "style!css" },
             { test: /\.scss$/, loader: "style!css!sass" },
