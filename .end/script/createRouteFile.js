@@ -69,7 +69,11 @@ class Script {
 			}else{
 				var layout_path = path.resolve(this.config.layoutPath,layout) 
 				var child_routesPath = path.resolve(layout_path,'.child_routes.js');
-				if(fs.existsSync(child_routesPath)){
+                //.child_routes.js文件不存在，创建新的
+                if(!fs.existsSync(layout_path)){
+					fs.writeFileSync(child_routesPath,"module.exports = [\n\r	//routes//\n\r]")
+                }
+				if(fs.existsSync(layout_path)){
 					if(!state[layout]){
 						//首次初始化，文件内容
 						fs.writeFileSync(child_routesPath,"module.exports = [\n\r	//routes//\n\r]")
