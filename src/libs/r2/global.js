@@ -5,7 +5,7 @@ window.r2fn = require('src/common/function')
 //公共fetch
 var Fetch = require('common/Fetch');
 window.r2fetch = function(option){
-	return new Fetch(option)
+  return new Fetch(option)
 };
 
 //公共Redux actionCreator

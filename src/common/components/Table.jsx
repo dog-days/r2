@@ -11,48 +11,48 @@ import * as Antd from 'antd'
  * @prop {Function} handlePagination(page) 分页点击切换回调函数 
  */
 class Component extends ModuleComponent{
-	constructor(props){
-		super(props)	
-	}
+  constructor(props){
+    super(props)  
+  }
 
-	shouldComponentUpdate(nextProps = {}, nextState = {}){
-		//if(this.props.loading !== nextProps.loading){
-			//return true;
-		//}
-		return r2fn.shouldDataUpdate(this.props,nextProps,'data')
-	}
+  shouldComponentUpdate(nextProps = {}, nextState = {}){
+    //if(this.props.loading !== nextProps.loading){
+      //return true;
+    //}
+    return r2fn.shouldDataUpdate(this.props,nextProps,'data')
+  }
 
-	render(){
-		let { dataSet,data,loading,handlePagination,...other} = this.props;
-		var targetData;
-		if(data){
-			targetData = data.toJS()
-			var dataSource = dataSet.dataAdapter(targetData.entries);
-			if(dataSet.getCurrentComponent && parent){
-				dataSet.getCurrentComponent(parent,targetData.entries)
-			}
-		}
-		console.debug("table-render",loading)
-		return (
-			<div { ...other }>
-				<Antd.Table className="mt15" columns={dataSet.columns} loading={ loading }
-					dataSource={ dataSource } size="middle" bordered pagination={ false }/>	
-				{
-					dataSource && targetData.total >= 2 * targetData.size && 
-					<Antd.Pagination onChange={ handlePagination } className="mt15 fr" 
-						defaultCurrent={targetData.current} current={ targetData.current }
-						defaultPageSize={ targetData.size } total={ targetData.total}/>	
-				}
+  render(){
+    let { dataSet,data,loading,handlePagination,...other} = this.props;
+    var targetData;
+    if(data){
+      targetData = data.toJS()
+      var dataSource = dataSet.dataAdapter(targetData.entries);
+      if(dataSet.getCurrentComponent && parent){
+      dataSet.getCurrentComponent(parent,targetData.entries)
+      }
+    }
+    console.debug("table-render",loading)
+    return (
+      <div { ...other }>
+      <Antd.Table className="mt15" columns={dataSet.columns} loading={ loading }
+        dataSource={ dataSource } size="middle" bordered pagination={ false }/>  
+      {
+        dataSource && targetData.total >= 2 * targetData.size && 
+        <Antd.Pagination onChange={ handlePagination } className="mt15 fr" 
+        defaultCurrent={targetData.current} current={ targetData.current }
+        defaultPageSize={ targetData.size } total={ targetData.total}/>  
+      }
 
-			</div>
-		)	
-	}
+      </div>
+    )  
+  }
 }
 Component.propTypes = {
-	dataSet: React.PropTypes.object,
-	data: React.PropTypes.object,
-	loading: React.PropTypes.bool,
-	className: React.PropTypes.string,
-	handlePagination: React.PropTypes.func,
+  dataSet: React.PropTypes.object,
+  data: React.PropTypes.object,
+  loading: React.PropTypes.bool,
+  className: React.PropTypes.string,
+  handlePagination: React.PropTypes.func,
 }
 module.exports = Component; 

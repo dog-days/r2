@@ -11,7 +11,7 @@ class Container extends React.Component {
     return (
       <Provider store={store}>
         <Router history={history} routes={rootRoute} />
-      </Provider>	
+      </Provider>  
     );
   }
 }

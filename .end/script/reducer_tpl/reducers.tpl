@@ -12,21 +12,21 @@ var initialState = Immutable.fromJS({
 });
 var immutableReducer = function(state, action){
     if(!state){
-    	state = initialState
+      state = initialState
     }
     if (action.type === LOCATION_CHANGE) {
-        return state.merge({
-            locationBeforeTransitions: action.payload
-        });
+      return state.merge({
+          locationBeforeTransitions: action.payload
+      });
     }
     return state;
 }
 
 var reducer = {
-<!--reducer_reducer_begin-->
-	${reducer},
-<!--reducer_reducer_end-->
-	routing: immutableReducer
+  <!--reducer_reducer_begin-->
+  ${reducer},
+  <!--reducer_reducer_end-->
+  routing: immutableReducer
 }
 
 export default reducer
