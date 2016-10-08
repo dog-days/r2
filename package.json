@@ -1,6 +1,6 @@
 {
   "name": "r2",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "r2",
   "dependencies": {
     "antd": "^1.8.0",

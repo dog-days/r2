@@ -12,59 +12,59 @@ commander
   .option('-p, --tableWithPagination <view-name>', '创建tableWithPagination视图模板')
   .parse(process.argv);
 if(!commander.rawArgs[2]) {
-	console.error("error: argument missing,please check for the command!")
-	return;
+  console.error("error: argument missing,please check for the command!")
+  return;
 }
 //console.log(commander.layout)
 //return;
 var src,dest,replaceStr = "",type,layout = "main",saveView = "view";
 if(commander.emptyPage){
-	src = path.resolve("src/page/.viewModel/emptyPage")
-	dest = path.resolve("src/page",saveView,commander.emptyPage)
-	replaceStr = commander.emptyPage;
-	type = "emptyPage";
-	if(commander.layout){
-		layout = commander.layout;
-	}
+  src = path.resolve("src/page/.viewModel/emptyPage")
+  dest = path.resolve("src/page",saveView,commander.emptyPage)
+  replaceStr = commander.emptyPage;
+  type = "emptyPage";
+  if(commander.layout){
+    layout = commander.layout;
+  }
 }
 if(commander.noactionreducer){
-	src = path.resolve("src/page/.viewModel/noactionreducer")
-	dest = path.resolve("src/page",saveView,commander.noactionreducer)
-	replaceStr = commander.noactionreducer;
-	type = "noactionreducer";
-	if(commander.layout){
-		layout = commander.layout;
-	}
+  src = path.resolve("src/page/.viewModel/noactionreducer")
+  dest = path.resolve("src/page",saveView,commander.noactionreducer)
+  replaceStr = commander.noactionreducer;
+  type = "noactionreducer";
+  if(commander.layout){
+    layout = commander.layout;
+  }
 }
 if(commander.tableNoPagination){
-	src = path.resolve("src/page/.viewModel/tableNoPagination")
-	dest = path.resolve("src/page",saveView,commander.tableNoPagination)
-	replaceStr = commander.tableNoPagination;
-	type = "tableNoPagination";
-	if(commander.layout){
-		layout = commander.layout;
-	}
+  src = path.resolve("src/page/.viewModel/tableNoPagination")
+  dest = path.resolve("src/page",saveView,commander.tableNoPagination)
+  replaceStr = commander.tableNoPagination;
+  type = "tableNoPagination";
+  if(commander.layout){
+    layout = commander.layout;
+  }
 }
 if(commander.tableWithPagination){
-	src = path.resolve("src/page/.viewModel/tableWithPagination")
-	dest = path.resolve("src/page",saveView,commander.tableWithPagination)
-	replaceStr = commander.tableWithPagination;
-	type = "tableWithPagination";
-	if(commander.layout){
-		layout = commander.layout;
-	}
+  src = path.resolve("src/page/.viewModel/tableWithPagination")
+  dest = path.resolve("src/page",saveView,commander.tableWithPagination)
+  replaceStr = commander.tableWithPagination;
+  type = "tableWithPagination";
+  if(commander.layout){
+    layout = commander.layout;
+  }
 }
 var CpDirAndReplaceStrAllFile = require("../libs/script/CpDirAndReplaceStrAllFile")
 if(!src || !dest || !replaceStr || !type){
-	console.error("error: argument missing,please check for the command!")
-	return;
+  console.error("error: argument missing,please check for the command!")
+  return;
 }
 new CpDirAndReplaceStrAllFile({
-	src, 
-	dest, 
-	replaceStr,
-	type,
-	layout,
+  src, 
+  dest, 
+  replaceStr,
+  type,
+  layout,
 })
 require("./createRouteAndReducer.js")
 

@@ -1,156 +1,156 @@
 @import '_mixin';
 //margin-top
 .mt5{
-	@include marginTop(5);
+  @include marginTop(5);
 }
 .mt10{
-	@include marginTop(10);
+  @include marginTop(10);
 }
 .mt15{
-	@include marginTop(15);
+  @include marginTop(15);
 }
 .mt20{
-	@include marginTop(20);
+  @include marginTop(20);
 }
 .mt25{
-	@include marginTop(25);
+  @include marginTop(25);
 }
 .mt30{
-	@include marginTop(30);
+  @include marginTop(30);
 }
 //margin-right
 .mr5{
-	@include marginRight(5);
+  @include marginRight(5);
 }
 .mr10{
-	@include marginRight(10);
+  @include marginRight(10);
 }
 .mr15{
-	@include marginRight(15);
+  @include marginRight(15);
 }
 .mr20{
-	@include marginRight(20);
+  @include marginRight(20);
 }
 .mr25{
-	@include marginRight(25);
+  @include marginRight(25);
 }
 .mr30{
-	@include marginRight(30);
+  @include marginRight(30);
 }
 //margin-left
 .ml5{
-	@include marginLeft(5);
+  @include marginLeft(5);
 }
 .ml10{
-	@include marginLeft(10);
+  @include marginLeft(10);
 }
 .ml15{
-	@include marginLeft(15);
+  @include marginLeft(15);
 }
 .ml20{
-	@include marginLeft(20);
+  @include marginLeft(20);
 }
 .ml25{
-	@include marginLeft(25);
+  @include marginLeft(25);
 }
 .ml30{
-	@include marginLeft(30);
+  @include marginLeft(30);
 }
 //margin-bottom
 .mb5{
-	@include marginBottom(5);
+  @include marginBottom(5);
 }
 .mb10{
-	@include marginBottom(10);
+  @include marginBottom(10);
 }
 .mb15{
-	@include marginBottom(15);
+  @include marginBottom(15);
 }
 .mb20{
-	@include marginBottom(20);
+  @include marginBottom(20);
 }
 .mb25{
-	@include marginBottom(25);
+  @include marginBottom(25);
 }
 .mb30{
-	@include marginBottom(30);
+  @include marginBottom(30);
 }
 
 //padding-top
 .pt5{
-	@include paddingTop(5);
+  @include paddingTop(5);
 }
 .pt10{
-	@include paddingTop(10);
+  @include paddingTop(10);
 }
 .pt15{
-	@include paddingTop(15);
+  @include paddingTop(15);
 }
 .pt20{
-	@include paddingTop(20);
+  @include paddingTop(20);
 }
 .pt25{
-	@include paddingTop(25);
+  @include paddingTop(25);
 }
 .pt30{
-	@include paddingTop(30);
+  @include paddingTop(30);
 }
 //padding-right
 .pr5{
-	@include paddingRight(5);
+  @include paddingRight(5);
 }
 .pr10{
-	@include paddingRight(10);
+  @include paddingRight(10);
 }
 .pr15{
-	@include paddingRight(15);
+  @include paddingRight(15);
 }
 .pr20{
-	@include paddingRight(20);
+  @include paddingRight(20);
 }
 .pr25{
-	@include paddingRight(25);
+  @include paddingRight(25);
 }
 .pr30{
-	@include paddingRight(30);
+  @include paddingRight(30);
 }
 //padding-left
 .pl5{
-	@include paddingLeft(5);
+  @include paddingLeft(5);
 }
 .pl10{
-	@include paddingLeft(10);
+  @include paddingLeft(10);
 }
 .pl15{
-	@include paddingLeft(15);
+  @include paddingLeft(15);
 }
 .pl20{
-	@include paddingLeft(20);
+  @include paddingLeft(20);
 }
 .pl25{
-	@include paddingLeft(25);
+  @include paddingLeft(25);
 }
 .pl30{
-	@include paddingLeft(30);
+  @include paddingLeft(30);
 }
 //padding-bottom
 .pb5{
-	@include paddingBottom(5);
+  @include paddingBottom(5);
 }
 .pb10{
-	@include paddingBottom(10);
+  @include paddingBottom(10);
 }
 .pb15{
-	@include paddingBottom(15);
+  @include paddingBottom(15);
 }
 .pb20{
-	@include paddingBottom(20);
+  @include paddingBottom(20);
 }
 .pb25{
-	@include paddingBottom(25);
+  @include paddingBottom(25);
 }
 .pb30{
-	@include paddingBottom(30);
+  @include paddingBottom(30);
 }
 
 
