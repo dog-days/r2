@@ -70,6 +70,9 @@ var config = {
   externals: {
     "react": "React",
     "react-dom": "ReactDOM",
+    "react-router": "ReactRouter",
+    "redux": "Redux",
+    "react-router-redux": "ReactRouterRedux",
     "immutable": "Immutable",
   },
   resolve: {

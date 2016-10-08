@@ -8,6 +8,7 @@ var view = function(){
   return re;
 }
 var childRoutes = function(){
+  //这里try在浏览器中是多此一举，在智能路由中，node环境就需要,跳过require文件不存在异常
   var re;
   try{
     re = require('./.child_routes.js');
@@ -21,8 +22,16 @@ var indexRoute = function(){
   }catch(e){}  
   return re;
 }
+var component = function(){
+  var re;
+  try{
+    re = require("./index");
+  }catch(e){}  
+  return re;
+}
 module.exports = {
   path: view(), 
+  component: component(),
   getComponent(location, cb) {
     require.ensure([], (require) => {
       cb(null, require("./index"))
