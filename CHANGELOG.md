@@ -2,6 +2,9 @@
 
 ### v0.0.4
 `2016-09-08`
+- `Fixed` layout中.child_routes.js文件不自动生成问题 
+- `Rewrite` 部分文件位置变动 
+- `Fixed` 模板页面生成路由问题 
 - `Fixed` 生成环境css文件没独立打包生成问题 
 - `Rewrite` 独立polyfill文件 
 - `Add` 国际化功能 

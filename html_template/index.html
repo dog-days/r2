@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+  <style>
+    #init-loading-tip {
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      background-color: rgb(242, 242, 242);
+      z-index: 999;
+    }
+    #init-loading-tip .loading {
+      position: absolute;
+      text-align:center;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    #init-loading-tip .spinner {
+      width: 60px;
+      height: 60px;
+      position: relative;
+      text-align: center;
+      margin: 40px auto;
+      animation: spinner-sk-rotate 2s linear infinite;
+    }
+    #init-loading-tip .spinner i {
+      width: 50%;
+      height: 50%;
+      display: inline-block;
+      position: absolute;
+      top: 0px;
+      background-color: rgb(56, 187, 225);
+      border-radius: 100%;
+      animation: spinner-sk-bounce 2s ease-in-out infinite;
+    }
+    #init-loading-tip .spinner .dot2 {
+      top: auto;
+      bottom: 0px;
+      animation-delay: -1s;
+    }
+
+    @keyframes spinner-sk-rotate {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    @keyframes spinner-sk-bounce{
+      0%,100% { transform: scale(0.0) }
+      50% { transform: scale(1.0) }
+    }
+    .ant-alert-error {
+      border: 1px solid #fdc;
+      background-color: #ffeee6;
+    }
+    .ant-alert-with-description.ant-alert-no-icon {
+      padding: 16px;
+    }
+    .ant-alert {
+      position: relative;
+      padding: 8px 8px 8px 16px;
+      border-radius: 6px;
+      color: #666;
+      font-size: 12px;
+      line-height: 16px;
+      margin-bottom: 10px;
+    }
+    .ant-alert-with-description .ant-alert-description {
+      display: block;
+    }
+    .ant-alert-with-description {
+      padding: 16px 16px 16px 69px;
+      position: relative;
+      border-radius: 6px;
+      margin-bottom: 10px;
+      color: #666;
+      line-height: 1.5;
+    }
+    .ant-alert-description {
+      font-size: 12px;
+      color: #999;
+      line-height: 21px;
+      display: none;
+    }
+    .ant-alert-info {
+      border: 1px solid #d5f1fd;
+      background-color: #eaf8fe;
+    }
+  </style>
+  </head>
+  <body>
+    <div id="init-loading-tip">
+      <div class="loading">
+        <div class="spinner">
+          <i class="dot1"></i>
+          <i class="dot2"></i>
+        </div>
+        <span>正在加载</span>
+        <br/>
+        <br/>
+        <div class="ant-alert nt-alert-error ant-alert-with-description ant-alert-no-icon ant-alert-info " style="text-align:left;">
+          <span class="ant-alert-message" style="text-align:center">温馨提示</span>
+          <span class="ant-alert-description">
+            请使用IE11以上,或使用微软Edge、谷歌、火狐、苹果Safari、Opera浏览器访问本网站。
+            也可以使用国内流行浏览器如360安全浏览器（使用时请确保使用比较新版的浏览器，同时要开启极速模式），谢谢！
+          </span>
+        </div>
+      </div>
+    </div>
+    <div id="app_container" >
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react-dom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/immutable/3.8.1/immutable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/3.6.0/redux.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-router/4.0.0-0/react-router.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-router-redux/4.0.6/ReactRouterRedux.min.js"></script>
+    <script>
+      var hide = document.getElementById("init-loading-tip")
+      hide.style.display = "none";
+    </script>
+  </body>
+</html>
+
+
+
+

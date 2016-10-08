@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import * as Antd from 'antd'
 import * as actionCreator from './action'
 
-
 class View extends Component {
 	constructor(props){
 		super(props); 
@@ -13,6 +12,7 @@ class View extends Component {
 		var _this = this;
 	}
 	componentWillUnmount(){
+        console.debug(0)
 	}
 	/**
 	 *	数据处理与适配
@@ -28,17 +28,23 @@ class View extends Component {
 	events(){
 		var _this = this;
 		return{
+            onClickfn: ()=>{
+                this.setState({
+                    flag: true,
+                }) 
+            }
 		}
 	}
     render() {
 		super.render();
 		var _this = this;
 		let { targetProps } = this.props;
-		return (
-			<div className="about">
-				<Antd.Alert message={r2fn.t("这是一个关于页面！")} type="info" showIcon />
-			</div>
-		)	
+        return (
+            <div className="about" >
+                <Antd.Alert message={r2fn.t("这是一个关于页面！")} type="info" showIcon />
+            </div>
+        )	
+        
     }
 }
 

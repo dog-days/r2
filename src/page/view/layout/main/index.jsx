@@ -5,7 +5,6 @@ import Antd from 'antd'
 import { Menu } from 'antd'
 import { Link } from 'react-router'
 
-require('antd/dist/antd.css')
 require('css/base.scss')
 require('css/main.scss')
 

@@ -1,40 +1,46 @@
 var path = require('path');
 var express = require('express');
 var webpack = require('webpack');
-var config = require('./webpack.config');
+var config = require('./webpack.config');//webpack.config.js同一目录
 var port = 8888;
 var app = express();
 var compiler = webpack(config);
 
-app.use(require('webpack-dev-middleware')(compiler, {
-    noInfo: true,
-    publicPath: config.output.publicPath,//必须跟webpack.config.js一致
-}));
-//设置路径不存在(webpack-dev-middleware内存中也不存在)时访问的目录
-app.use(express.static(path.join(__dirname, 'public')));
+var webpackDevMiddleware = require('webpack-dev-middleware')(compiler, {
+  noInfo: true,
+  //publicPath必须跟webpack.config.js的ouput.publickPath一致
+  publicPath: config.output.publicPath,
+})
+app.use(webpackDevMiddleware);
 app.use(require('webpack-hot-middleware')(compiler));
-//地址重写，所以请求都定位到public/index.html文件
-app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname, 'public/index_dev.html'));
-});
+//访问的静态文件
+app.use(express.static(path.join(__dirname, './public'),{
+  //禁用目录index索引，要不生成环境打包后，开发环境访问域名会直接访问到index.html。
+  index: false,
+}));
+//这里是特殊处理，因为是内存文件，在地址重写时，要重内存中把index.html文件内容取出来
+compiler.plugin("done", function(stats) {
+  try{
+    var fs = compiler.outputFileSystem;
+    var index_path = webpackDevMiddleware.getFilenameFromUrl(config.output.publicPath + "/index.html");
+    //console.log(fs)
+    var index = fs.readFileSync(index_path);
+    //所有请求都定位到内存文件index.html
+    app.get('*', function(req, res) {
+      res.send(index.toString('utf8', 0, index.length));
+    });
+  }catch(e){
+    console.log("----------",e)  
+    console.log("----------")  
+  }
+})
+
 var host = "localhost"
 app.listen(port, host, function(err) {
-    if (err) {
-        console.log(err);
-        return;
-    }
-    console.info("==> 🌎  Listening on port %s. Open up http://"+host+":%s/ in your browser.", port, port)
+  if (err) {
+    console.log(err);
+    return;
+  }
+  console.info("==> 🌎  Listening on port %s. Open up http://"+host+":%s/ in your browser.", port, port)
 });
 
-//new WebpackDevServer(webpack(config), {
-//publicPath: config.output.publicPath,//必须跟webpack.config.js一致
-//hot: true,
-//historyApiFallback: true,
-//contentBase : "./public/"
-//}).listen(port, 'localhost', function(err, result) {
-//if (err){
-//console.log(err)
-//}else{
-//console.info("==> 🌎  Listening on port %s. Open up http://localhost:%s/ in your browser.", port, port)
-//}
-//});
