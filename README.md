@@ -1,7 +1,8 @@
 # R2框架
 
-[R2框架](https://github.com/dog-days/r2)(Redux React Framework)主要是基于React、Redux而构建的(其他配合使用的还有当然也使用了react-router,react-router-redux,react-redux,immutable.js)。使用webpack模块加载工具，采用ES62015语法。所有如果要使用本框架，这些知识多多少少都要会点的。同时也使用了[Ant Design React](http://ant.design/#/docs/react/introduce)组件,生成的页面使用的UI是Ant Design,目前只支持这种，后面页面生成也会支持多种UI组件。
-R2框架旨在快速搭建页面，减少重复工作，减少重复代码，提高开发效率。
+[R2框架](https://github.com/dog-days/r2)(Redux React Framework)主要是基于React、Redux而构建的，其中还是用了`react-router`、`react-router-redux`、`react-redux`、`immutable.js`。同时使用webpack模块加载工具，采用ES62015语法。所有如果要使用本框架，这些知识多多少少都要会点的。同时也使用了[Ant Design React](http://ant.design/#/docs/react/introduce)组件,生成的页面使用的UI是Ant Design,目前只支持这种，后面页面生成也会支持多种UI组件。 R2框架旨在快速搭建页面，减少重复工作，减少重复代码，提高开发效率。
+
+特别说明：下面的环境是在mac下搭建的，在windows上会有差异。
 
 ## R2框架相关阅读
 
@@ -56,25 +57,28 @@ R2/
 由于还没有正式的版本，可以clone或者下载本框架文件,然后运行下面命令。
 通过nvm安装node（nvm可以管理多个版本node,可以来回切换,请使用v6.0.0以上）
 
-```
+```sh
 //安装nvm
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.0/install.sh | bash
 //安装最新版node,并可以立刻使用node不用重启终端,安装时好像被墙了，通过vpn装成功
 nvm install node && nvm alias default node
 ```
 
-npm安装如果被墙可以使用[淘宝镜像](http://npm.taobao.org/)，但是使用cnpm有时候会安装不完全，下面会特别说明。
+npm安装如果被墙可以使用[淘宝镜像](http://npm.taobao.org/)，单不建议使用cnpm，使用cnpm有时候会安装不完全，直接在~/.npmrc中直接配置：
 
+```sh
+registry=https://registry.npm.taobao.org
 ```
-//如果没有安装grunt，请先安装要grunt。
-npm install -g grunt-cli //安装全局命令
-npm install //等待安装各种需要的package
-cd .end && npm install//安装本框架node后端支持，部分功能需要用到
+
+```sh
+#如果没有安装grunt，请先安装要grunt。
+npm install -g grunt-cli #安装全局命令
+npm install #等待安装各种需要的package
+cd .end && npm install && cd ../ #安装本框架node后端支持，部分功能需要用到
 npm run ac
 npm start
 ```
 
-或者把`npm intall && cd .end && npm install`替换成`npm run i` 或 `npm run ci`(需要淘宝镜像支持)
 然后直接在浏览中打开`http://localhost:8888/`,即可访问。
 
 ### R2框架命令
@@ -183,35 +187,46 @@ layout是特殊的一种view，其实就是react-router中的第二层组件（�
 
 layout包括以下必要文件
 
-- `_route.js`，用作路由生成
+- `_route.js`，用作路由生成，可自行修改，单务必按照以下格式。
 
-  ```jsx
-  'use strict';
-  var view = function(){
-  	//这里try在浏览器中是多此一举，在智能路由中，后端node环境就需要,跳过r2Common未定义异常
-  	var re; 
-  	try{
-  		re = `${r2Common.prefixUrl}`;
-  	}catch(e){}
-  	return re;
-  }
-  var childRoutes = function(){
-  	var re;
-  	try{
-  		re = require('./.child_routes.js')//自动生成，不需理会
-  	}catch(e){}	
-  	return re;
-  }
-  module.exports = {
-  	path: view(), 
-      getComponent(location, cb) {
-          require.ensure([], (require) => {
-              cb(null, require("./index"))
-          },"main")
-      },
-      childRoutes: childRoutes(),//这里是子组件view数组
-  }
-  ```
+```jsx
+'use strict';
+var view = function(){
+	//这里try在浏览器中是多此一举，在智能路由中，node环境就需要,跳过r2Common未定义异常
+	var re; 
+	try{
+		re = `${r2Common.prefixUrl}`;
+	}catch(e){}
+	return re;
+}
+var childRoutes = function(){
+    //这里try在浏览器中是多此一举，在智能路由中，node环境就需要,跳过r2Common未定义异常
+	var re;
+	try{
+		re = require('./.child_routes.js');
+	}catch(e){}	
+	return re;
+}
+var indexRoute = function(){
+    //这里try在浏览器中是多此一举，在智能路由中，node环境就需要,跳过r2Common未定义异常
+	var re;
+	try{
+		re = require("src/page/view/index/_route.js");//indexRoute指定位置
+	}catch(e){}	
+	return re;
+}
+module.exports = {
+	path: view(), 
+    getComponent(location, cb) {
+        require.ensure([], (require) => {
+            cb(null, require("./index"))
+        },"main")
+    },
+   	indexRoute: indexRoute(),
+    childRoutes: childRoutes(),
+}
+```
+其中`r2Common.prefixUrl`是公共path部分（详细看下面公共path部分），可自行定义默认为空。如果定义后为`/r2`访问`/`会跳转到`/r2`路由。有点需要注意的是：**indexRoute**需要自己手动指定位置。
 
 - `index.jsx`，传进react-router处理
 
@@ -254,7 +269,7 @@ module.exports = ReduxView;
 
 view是我们代码开发主要地方，以下是必要文件，`action.js`和`reducer.js`看需要。
 
-- `_route.js`,可当做二级路由（没layout）或三级路由（有layout）
+- `_route.js`,可当做二级路由（没layout）或三级路由（有layout），可自行修改，单务必按照以下格式。
 
 ```jsx
 'use strict';
@@ -266,6 +281,7 @@ var view = function(){
 	}catch(e){}
 	return re;
 } 
+//以下配置请参照React-Router官方文档
 module.exports = {
 	layout: "main",//在这里设置layout
 	path: view(), 
@@ -312,6 +328,16 @@ ReduxView.defaultProps = Object.assign({},Component.defaultProps,{
     ],
 });
 module.exports = ReduxView; 
+```
+
+### 设置公共path
+
+假设我们的域名是localhost，平常我们都是直接访问http://localhost就看访问了页面主页。但是也有特殊要求，要在http://localhost/main访问主页，访问http://localhost也跳转到http://localhost/main(当然通过ngnix可以做些特殊处理)。这个功能就是给你设置main的。
+
+通过`r2Common.prefixUrl`（位置在`src/common/common.js`）设置，默认为空，如果不为空第一个字符必须是`/`，如
+
+```jsx
+r2Common.prefixUrl = '/main';//如果只设置为'main',访问时会报404。
 ```
 
 ### 设置浏览器标签title
@@ -410,8 +436,6 @@ ReduxView.defaultProps = Object.assign({},Component.defaultProps,{
 </div>
 ```
 
-
-
 ### 自定义route
 
 R2框架目标是让使用者可以不用理会路由层，不过也提供了自定义路由和覆盖已生成的路由。进入`R2/src/routes.js`,代码如下：
@@ -485,7 +509,52 @@ export function logout(state = {}, action) {
 - r2fn,公共常用方法
 - r2ActionCreator,公共actionCreator
 - r2fetch,R2封装的fetch方法
-- r2Common,公共才设置或其他公共方法或公共变量
+- r2Common,当前项目公共配置或方法
+
+## 国际化功能
+
+国际化语言包位置在`R2/src/common/locale`文件中，`index.js`文件是默认是当地开发中语言。配置语言位置在`R2/src/common/common.js`中，如下：
+
+```js
+//国际化处理，language未定义就是默认使用./locale/index.js
+export const language = require("./locale/en_US")
+```
+
+使用方式如下：
+
+```jsx
+...
+return (
+	<div>{r2fn.t("主页")}</div>
+)
+...
+```
+
+`locale/index.js`
+
+```jsx
+module.exports = [
+	"R2框架",
+	"主页",
+	"关于",
+	"这是一个主页页面！",
+	"这是一个关于页面！",
+]
+```
+
+`locale/en_US.js`，索引位置要跟上面的一一对应，所以最好以index.js模板进行翻译，**注意空格**哦
+
+```js
+module.exports = [
+	"R2 framework",
+	"Home",
+	"About",
+	"This is a home page!",
+	"This is a  about page!",
+]
+```
+
+## 约定位置
 
 ## 其他的一些特殊模式
 
@@ -557,5 +626,6 @@ module.exports = View;
 ## FAQ
 
 正在整理。 
+
 
 
