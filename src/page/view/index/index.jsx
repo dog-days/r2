@@ -29,16 +29,16 @@ class View extends Component {
 		return{
 		}
 	}
-    render() {
-		super.render();
-		var _this = this;
-		let { targetProps } = this.props;
-		return (
-			<div className="about">
-				<Antd.Alert message={r2fn.t("这是一个主页页面！")} type="info" showIcon />
-			</div>
-		)	
-    }
+  render() {
+    super.render();
+    var _this = this;
+    let { targetProps } = this.props;
+    return (
+      <div className="about">
+        <Antd.Alert message={r2fn.t("这是一个主页页面！")} type="info" showIcon />
+      </div>
+    )	
+  }
 }
 
 var ReduxView = connect((state)=>{

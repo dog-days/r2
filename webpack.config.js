@@ -10,6 +10,7 @@ if(isProduction){
   ];
 }else{
   var entry =  [
+    //'react-hot-loader/patch',
     'webpack-hot-middleware/client',//热替换入口文件
     './src/index.jsx'
   ];
@@ -69,6 +70,7 @@ var config = {
   externals: {
     "react": "React",
     "react-dom": "ReactDOM",
+    "immutable": "Immutable",
   },
   resolve: {
     alias: {
